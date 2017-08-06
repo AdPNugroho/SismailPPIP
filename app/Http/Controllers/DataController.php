@@ -442,12 +442,18 @@ class DataController extends Controller
             $jenis = $data['jenis_surat'];
             switch ($jenis) {
                 case '1':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -497,11 +503,16 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '2':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -518,7 +529,7 @@ class DataController extends Controller
                         }
                         if($data['kode_seksi']===null){
                             $nomor_surat = 'S-'.$c.'.TA/WPJ.14/'.$tanggalInsert;
-                            $kode_seksi = null;
+                            $kode_seksi = $data['kode_seksi'];
                         }else{
                             $nomor_surat = 'S-'.$c.'.TA/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
                             $kode_seksi = strtoupper($data['kode_seksi']);
@@ -561,12 +572,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '3':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -616,12 +633,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '4':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -671,12 +694,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '5':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -726,12 +755,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '6':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -781,12 +816,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '7':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -836,12 +877,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '8':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -891,12 +938,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '9':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -946,12 +999,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '10':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1001,12 +1060,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '11':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1059,15 +1124,84 @@ class DataController extends Controller
                     //WPJ.14 Belum Jelas
                     break;
                 case '13':
-                    //UND Belum Jelas
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi'
+                    );
+                    Validator::make($data,[
+                        'tanggal_surat'=>['required'],
+                        'tujuan'=>['required'],
+                        'perihal'=>['required']
+                    ],$message)->validate();$explodeTanggal = explode('/',$data['tanggal_surat']);
+                    $tanggalInsert = $explodeTanggal[2];
+                    $valueBefore = OutboxFirstModel::select('nomor_surat')
+                                    ->where('kode_jenis','13')
+                                    ->orderBy('nomor_urut', 'desc')
+                                    ->limit('1')
+                                    ->get();
+                    if(count($valueBefore)>0){
+                        $a = explode('/',$valueBefore[0]['nomor_surat']);
+                        $b = explode('-',$a[0]);
+                        $c = (int)$b[1] + 1;
+                        if(strlen($c)<2){
+                            $c = sprintf('%02d',$c);
+                        }
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'UND-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'UND-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
+                        $arrayInsert = array(
+                            'nomor_urut'=>(int)$b[1] + 1,
+                            'nomor_surat'=>$nomor_surat,
+                            'tanggal_surat'=>Carbon::parse($data['tanggal_surat'])->format('Y-m-d'),
+                            'tujuan'=>$data['tujuan'],
+                            'perihal_surat'=>$data['perihal'],
+                            'tembusan'=>$data['tembusan'],
+                            'menjawab'=>$data['sehubungan'],
+                            'kode_seksi_pembuat'=>strtoupper($data['kode_seksi']),
+                            'kode_jenis'=>'13'
+                        );
+                        OutboxFirstModel::create($arrayInsert);
+                    }else{
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'UND-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'UND-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
+                        $arrayInsert = array(
+                            'nomor_urut'=>'1',
+                            'nomor_surat'=> $nomor_surat,
+                            'tanggal_surat'=>Carbon::parse($data['tanggal_surat'])->format('Y-m-d'),
+                            'tujuan'=>$data['tujuan'],
+                            'perihal_surat'=>$data['perihal'],
+                            'tembusan'=>$data['tembusan'],
+                            'menjawab'=>$data['sehubungan'],
+                            'kode_seksi_pembuat'=>strtoupper($data['kode_seksi']),
+                            'kode_jenis'=>'13'
+                        );
+                        OutboxFirstModel::create($arrayInsert);
+                    }
+                    $response = array(
+                        'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
+                        'status'=>'success'
+                    );
+                    return response()->json($response);
                     break;
                 case '14':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1117,6 +1251,19 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '15':
+                    $message = array(
+                        'tanggal_berita_fax.required'=>'Tanggal Berita Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'jumlah_hal.required'=>'Jumlah Hal Harus Di Isi',
+                        'tanggal_kirim.required'=>'Tanggal Kirim Harus Di Isi',
+                        'hal.required'=>'Hal Harus Di Isi',
+                        'nama_petugas.required'=>'Nama Petugas Harus Di Isi',
+                        'nip.required'=>'NIP Harus Di Isi',
+                        'jabatan_petugas.required'=>'Jabatan Petugas Harus Di Isi',
+                        'penandatangan.required'=>'Penanda Tangan Harus Di Isi',
+                        'nama_kasi.required'=>'Nama Kasi Harus Di Isi',
+                        'nip_kasi.required'=>'NIP Kasi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_berita_fax'=>['required'],
                         'tujuan'=>['required'],
@@ -1129,7 +1276,7 @@ class DataController extends Controller
                         'penandatangan'=>['required'],
                         'nama_kasi'=>['required'],
                         'nip_kasi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $valueBefore = OutboxFaxModel::orderBy('nomor_fax', 'desc')
                                     ->limit('1')
                                     ->get();
@@ -1161,12 +1308,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '16':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1216,12 +1369,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '17':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1271,12 +1430,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '18':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1326,12 +1491,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '19':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1381,7 +1552,14 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '20':
-                    //TODO CHECK LII 
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'nama_wp.required'=>'Nama WP Harus Di Isi',
+                        'npwp.required'=>'NPWP Harus Di Isi',
+                        'tahun_pajak.required'=>'Tahun Pajak Harus Di Isi',
+                        'analis.required'=>'Analis Harus Di Isi',
+                        'jenis_surat.required'=>'Jenis Surat Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'nama_wp'=>['required'],
@@ -1389,7 +1567,7 @@ class DataController extends Controller
                         'tahun_pajak'=>['required'],
                         'analis'=>['required'],
                         'jenis_surat'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxSecondModel::select('nomor_surat')
@@ -1443,6 +1621,15 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '21':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'nama_wp.required'=>'Nama WP Harus Di Isi',
+                        'npwp.required'=>'NPWP Harus Di Isi',
+                        'tahun_pajak.required'=>'Tahun Pajak Harus Di Isi',
+                        'analis.required'=>'Analis Harus Di Isi',
+                        'jenis_surat.required'=>'Jenis Surat Harus Di Isi',
+                        'tindak_lanjut.required'=>'Tindak Lanjut Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'nama_wp'=>['required'],
@@ -1451,7 +1638,7 @@ class DataController extends Controller
                         'analis'=>['required'],
                         'jenis_surat'=>['required'],
                         'tindak_lanjut'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxSecondModel::select('nomor_surat')
@@ -1505,6 +1692,14 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '22':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'nama_wp.required'=>'Nama WP Harus Di Isi',
+                        'npwp.required'=>'NPWP Harus Di Isi',
+                        'tahun_pajak.required'=>'Tahun Pajak Harus Di Isi',
+                        'jenis_surat.required'=>'Jenis Surat Harus Di Isi',
+                        'tindak_lanjut.required'=>'Tindak Lanjut Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'nama_wp'=>['required'],
@@ -1512,7 +1707,7 @@ class DataController extends Controller
                         'tahun_pajak'=>['required'],
                         'jenis_surat'=>['required'],
                         'tindak_lanjut'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxSecondModel::select('nomor_surat')
@@ -1568,6 +1763,15 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '23':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'nama_wp.required'=>'Nama WP Harus Di Isi',
+                        'npwp.required'=>'NPWP Harus Di Isi',
+                        'tahun_pajak.required'=>'Tahun Pajak Harus Di Isi',
+                        'analis.required'=>'Analis Harus Di Isi',
+                        'jenis_surat.required'=>'Jenis Surat Harus Di Isi',
+                        'tindak_lanjut.required'=>'Tindak Lanjut Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'nama_wp'=>['required'],
@@ -1576,7 +1780,7 @@ class DataController extends Controller
                         'analis'=>['required'],
                         'jenis_surat'=>['required'],
                         'tindak_lanjut'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxSecondModel::select('nomor_surat')
@@ -1630,13 +1834,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '24':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'perihal_surat.required'=>'Perihal Harus Di Isi',
+                        'tahun_pajak.required'=>'Tahun Pajak Harus Di Isi',
+                        'kesimpulan.required'=>'Kesimpulan Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'perihal_surat'=>['required'],
                         'tahun_pajak'=>['required'],
-                        'kesimpulan'=>['required'],
-                        'jenis_surat'=>['required']
-                    ])->validate();
+                        'kesimpulan'=>['required']
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxSecondModel::select('nomor_surat')
@@ -1690,12 +1899,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '25':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1745,12 +1960,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '26':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1800,12 +2021,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '27':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1855,12 +2082,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '28':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1910,12 +2143,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '29':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -1965,6 +2204,14 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '30':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat harus Di Isi',
+                        'nama_wp.required'=>'Nama WP Harus Di Isi',
+                        'NPWP.required'=>'NPWP Harus Di Isi',
+                        'tahun_pajak.required'=>'Tahun Pajak Harus Di Isi',
+                        'analis.required'=>'Analis Harus Di Isi',
+                        'jenis_surat.required'=>'Jenis Surat Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'nama_wp'=>['required'],
@@ -1972,7 +2219,7 @@ class DataController extends Controller
                         'tahun_pajak'=>['required'],
                         'analis'=>['required'],
                         'jenis_surat'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxSecondModel::select('nomor_surat')
@@ -2026,12 +2273,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '31':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2081,12 +2334,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '32':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2136,12 +2395,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '33':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2191,12 +2456,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '34':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2246,12 +2517,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '35':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2301,12 +2578,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '36':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2356,15 +2639,85 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '37':
-            //KEPKakanwil
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi'
+                    );
+                    Validator::make($data,[
+                        'tanggal_surat'=>['required'],
+                        'tujuan'=>['required'],
+                        'perihal'=>['required']
+                    ],$message)->validate();
+                    $explodeTanggal = explode('/',$data['tanggal_surat']);
+                    $tanggalInsert = $explodeTanggal[2];
+                    $valueBefore = OutboxFirstModel::select('nomor_surat')
+                                    ->where('kode_jenis',30)
+                                    ->orderBy('nomor_urut','desc')
+                                    ->limit('1')
+                                    ->get();
+                    if(count($valueBefore)>0){
+                        $a = explode('/',$valueBefore[0]['nomor_surat']);
+                        $b = explode('-',$a[0]);
+                        $c = (int)$b[1] + 1;
+                        if(strlen($c)<2){
+                            $c = sprintf('%02d',$c);
+                        }
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'KEPKakanwil-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'KEPKakanwil-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
+                        $arrayInsert = array(
+                            'nomor_urut'=>(int)$b[1] + 1,
+                            'nomor_surat'=> $nomor_surat,
+                            'tanggal_surat'=>Carbon::parse($data['tanggal_surat'])->format('Y-m-d'),
+                            'tujuan'=>$data['tujuan'],
+                            'perihal_surat'=>$data['perihal'],
+                            'tembusan'=>null,
+                            'menjawab'=>null,
+                            'kode_seksi_pembuat'=>strtoupper($data['kode_seksi']),
+                            'kode_jenis'=>'30'
+                        );
+                        OutboxFirstModel::create($arrayInsert);
+                    }else{
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'KEPKakanwil-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'KEPKakanwil-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
+                        $arrayInsert = array(
+                            'nomor_urut'=>'1',
+                            'nomor_surat'=> $nomor_surat,
+                            'tanggal_surat'=>Carbon::parse($data['tanggal_surat'])->format('Y-m-d'),
+                            'tujuan'=>$data['tujuan'],
+                            'perihal_surat'=>$data['perihal'],
+                            'tembusan'=>null,
+                            'menjawab'=>null,
+                            'kode_seksi_pembuat'=>strtoupper($data['kode_seksi']),
+                            'kode_jenis'=>'30'
+                        );
+                        OutboxFirstModel::create($arrayInsert);                        
+                    }
+                    $response = array(
+                        'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
+                        'status'=>'success'
+                    );
+                    return response()->json($response);
                     break;
                 case '38':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2414,12 +2767,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '39':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2469,12 +2828,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '40':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2524,12 +2889,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '41':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2579,12 +2950,18 @@ class DataController extends Controller
                     return response()->json($response);
                     break;
                 case '42':
+                    $message = array(
+                        'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+                        'tujuan.required'=>'Tujuan Harus Di Isi',
+                        'perihal.required'=>'Perihal Harus Di Isi',
+                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                    );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
-                    ])->validate();
+                    ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
                     $valueBefore = OutboxFirstModel::select('nomor_surat')
@@ -2637,5 +3014,27 @@ class DataController extends Controller
         }else{
             exit("Not an Ajax Request!");
         }
+    }
+
+    public function dataOutboxDetail(Request $request){
+        
+    }
+
+    public function dataOutboxDelete(Request $request){
+        $data = $request->all();
+        $type = $data['type'];
+        $id = $data['id'];
+        if($type=='1'){
+            OutboxFirstModel::destroy($id);
+        }else if($type=='2'){
+            OutboxFaxModel::destroy($id);
+        }else if($type=='3'){
+            OutboxSecondModel::destroy($id);
+        }
+        $response = array(
+            'message'=>'Data Surat Berhasil Di Hapus',
+            'status'=>'success'
+        );
+        return response()->json($response);
     }
 }

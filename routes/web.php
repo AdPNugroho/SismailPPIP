@@ -166,3 +166,7 @@ Route::get('/data/fax','DataController@dataFax');
 
 
 Route::post('/post/outbox','DataController@dataOutboxPost');
+
+Route::post('/post/detail','DataController@dataOutboxDetail');
+
+Route::post('/outbox/delete','DataController@dataOutboxDelete');

@@ -38,10 +38,10 @@
     </li>
     <li class="menu-title">Data</li>
     <li>
-        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Masuk </span></a>
+        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
     </li>
     <li>
-        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
+        <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
     <li class="menu-title">Account</li>
     <li>
@@ -192,6 +192,7 @@
 <!-- jQuery  -->
 <script src="{{ url('assets/js/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ url('assets/js/bootstrap-confirmation.min.js') }}"></script>
 <script src="{{ url('assets/js/detect.js') }}"></script>
 <script src="{{ url('assets/js/fastclick.js') }}"></script>
 <script src="{{ url('assets/js/jquery.blockUI.js') }}"></script>
@@ -247,7 +248,7 @@
                 {data: 'id_pengguna',
                     render: function (data, type, row) {
                         return  '<a class="updateAdmin btn btn-sm btn-icon btn-primary waves-effect waves-light m-b-5" data-id='+data +'><i class="fa fa-mouse-pointer"></i></a>' +
-                                '<a class="deleteAdmin btn btn-sm btn-icon btn-youtube waves-effect waves-light m-b-5" data-id='+data + '><i class="glyphicon glyphicon-trash"></i></a>';
+                                '<a class="deleteAdmin btn btn-sm btn-icon btn-youtube waves-effect waves-light m-b-5" data-title="Hapus Admin ?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left" data-id='+data + '><i class="glyphicon glyphicon-trash"></i></a>';
                     },'width':'5%'
                 }
             ]
@@ -314,11 +315,13 @@
             });
     });
     $(document).on('click', '.deleteAdmin', function () {
-        var id = $(this).attr('data-id');
-        $('#divContent').pleaseWait();
-        $.post("{{ url('adm/deleteAdmin') }}", {
-                "_token": "{{ csrf_token() }}",
-                "id": id
+        $(this).confirmation('show');
+        $(this).on('confirmed.bs.confirmation',function(){
+            var id = $(this).attr('data-id');
+            $('#divContent').pleaseWait();
+            $.post("{{ url('adm/deleteAdmin') }}", {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id
             },
             function (response) {
                 $.toast({
@@ -329,11 +332,12 @@
                     showHideTransition: 'slide',
                     icon: response.status
                 });
-                $("#dataUser").DataTable().ajax.reload(null,false);
-            }, "json")
-            .done(function(){
-                $('#divContent').pleaseWait('stop');
-            });
+                    $("#dataUser").DataTable().ajax.reload(null,false);
+                }, "json")
+                .done(function(){
+                    $('#divContent').pleaseWait('stop');
+                });
+        });
     });
     $(document).on('click', '#updateAdmin', function () {
         var dataForm = $('#formUpdateAdmin').serialize();

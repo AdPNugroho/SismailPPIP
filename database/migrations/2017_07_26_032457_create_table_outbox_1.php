@@ -23,7 +23,7 @@ class CreateTableOutbox1 extends Migration
             $table->text('perihal_surat');
             $table->text('tembusan')->nullable();
             $table->text('menjawab')->nullable();
-            $table->text('kode_seksi_pembuat');
+            $table->text('kode_seksi_pembuat')->nullable();
             $table->integer('kode_jenis');
             $table->timestamps();
         });

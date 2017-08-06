@@ -24,6 +24,13 @@
 <link rel="stylesheet" href="{{ url('assets/plugins/switchery/switchery.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('/assets/css/jquery.toast.css') }}"> 
+<style>
+td.noWrapTd{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+</style>
 @endsection 
 
 @section('nav')
@@ -40,7 +47,7 @@
     </li>
     <li class="menu-title">Data</li>
     <li>
-        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Masuk </span></a>
+        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
     </li>
     <li>
         <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
@@ -765,6 +772,7 @@
 <!-- jQuery  -->
 <script src="{{ url('assets/js/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ url('assets/js/bootstrap-confirmation.min.js') }}"></script>
 <script src="{{ url('assets/js/detect.js') }}"></script>
 <script src="{{ url('assets/js/fastclick.js') }}"></script>
 <script src="{{ url('assets/js/jquery.blockUI.js') }}"></script>
@@ -978,10 +986,7 @@ $(document).ready(function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
-			},complete:function(){
-                //JIKA SUDAH SELESAI UPDATE DATA DISPOSISI, CARI DATA DISPOSISI SEBELUM NOMOR AGENDA
-                
-            }
+			}
         });
     });
     $('#nextDisposisi').click(function(){
@@ -1096,7 +1101,7 @@ $(document).ready(function(){
                             item.dicatat==1             ? $('#petunjukCatatDps').prop('checked', true)             : $('#petunjukCatatDps').prop('checked', false);
                             item.arsip==1               ? $('#petunjukArsipDps').prop('checked', true)             : $('#petunjukArsipDps').prop('checked', false);
                             item.petunjuk_lainnya!==null   ? $('#labelPetunjukLainnyaDps').val(item.petunjuk_lainnya) : $('#labelPetunjukLainnyaDps').val('');
-                        }); 
+                        });   
                     }else{
                         $.toast({
                             heading: 'Kesalahan',
@@ -1108,6 +1113,7 @@ $(document).ready(function(){
                         });
                     }
                 },"json").done(function(){
+                    $('#bodyDisposisiModal').pleaseWait('stop');  
                     //Button Enable NEXT TODO
                 });
             },
@@ -1125,10 +1131,7 @@ $(document).ready(function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
-			},complete:function(){
-                $('#bodyDisposisiModal').pleaseWait('stop');
-                //JIKA SUDAH SELESAI UPDATE DATA DISPOSISI, CARI DATA DISPOSISI SURAT AGENDA SELANJUTNYA
-            }
+			}
         });
     });
     $('#saveDisposisi').click(function(){
@@ -1330,8 +1333,14 @@ function loadDataInbox(){
             {data:'perihal'},
             {data:'id_surat',render:function(data,type,row){
                 return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailInbox" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>'+
-                        '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 deleteInbox" data-id="'+ data +'"><i class="fa fa-remove"></i></a>';
-            }},
+                        '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 deleteInbox" data-title="Hapus Surat Masuk?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left" data-id="'+ data +'"><i class="fa fa-remove"></i></a>';
+            }}
+        ],
+            columnDefs:[
+            {className:"noWrapTd",targets:[2]},
+            {className:"noWrapTd",targets:[3]},
+            {className:"noWrapTd",targets:[4]},
+            {className:"noWrapTd",targets:[-1]}
         ]
     });
 }
@@ -1654,22 +1663,26 @@ $(document).on('click','.updateInbox',function(){
 });
 
 $(document).on('click','.deleteInbox',function(){
-    var id = $(this).attr('data-id');
-    $.post("{{ url('/adm/deleteInbox') }}",{
-        "_token":"{{ csrf_token() }}",
-        "id":id
-    },
-    function (response){
-        $.toast({
-            heading: 'Information',
-            text: response.message,
-            position: 'bottom-right',
-            stack: false,
-            showHideTransition: 'slide',
-            icon: response.status
-        });
-    },"json").done(function(){
-        $('#tableInbox').DataTable().ajax.reload(null,false);
+    $(this).confirmation('show');
+    $(this).on('confirmed.bs.confirmation',function(){
+        var id = $(this).attr('data-id');
+        $.post("{{ url('/adm/deleteInbox') }}",{
+            "_token":"{{ csrf_token() }}",
+            "id":id
+        },
+        function (response){
+            $.toast({
+                heading: 'Information',
+                text: response.message,
+                position: 'bottom-right',
+                stack: false,
+                showHideTransition: 'slide',
+                icon: response.status
+            });
+        },"json").done(function(){
+            $('#tableInbox').DataTable().ajax.reload(null,false);
+            $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
+        }); 
     });
 });
 

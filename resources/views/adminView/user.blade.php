@@ -37,10 +37,10 @@
     </li>
     <li class="menu-title">Data</li>
     <li>
-        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Masuk </span></a>
+        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
     </li>
     <li>
-        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
+        <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
     <li class="menu-title">Account</li>
     <li>
@@ -207,6 +207,7 @@
 <!-- jQuery  -->
 <script src="{{ url('assets/js/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ url('assets/js/bootstrap-confirmation.min.js') }}"></script>
 <script src="{{ url('assets/js/detect.js') }}"></script>
 <script src="{{ url('assets/js/fastclick.js') }}"></script>
 <script src="{{ url('assets/js/jquery.blockUI.js') }}"></script>
@@ -291,25 +292,29 @@
         });
     });
     $(document).on('click','.deleteUser',function(){
-        var id = $(this).attr('data-id');
-        $('#divContent').pleaseWait();
-        $.post("{{ url('adm/deleteUser') }}",{
-            "_token":"{{ csrf_token() }}",
-            "id":id
-        },
-        function(response){
-            $.toast({
-                heading: 'Information',
-                text: response.message,
-                position: 'bottom-right',
-                stack: false,
-                showHideTransition: 'slide',
-                icon: response.status
+        $(this).confirmation('show');
+        $(this).on('confirmed.bs.confirmation',function(){
+            var id = $(this).attr('data-id');
+            $('#divContent').pleaseWait();
+            $.post("{{ url('adm/deleteUser') }}",{
+                "_token":"{{ csrf_token() }}",
+                "id":id
+            },
+            function(response){
+                $.toast({
+                    heading: 'Information',
+                    text: response.message,
+                    position: 'bottom-right',
+                    stack: false,
+                    showHideTransition: 'slide',
+                    icon: response.status
+                });
+                loadDt()
+            },"json")
+            .done(function(){
+                $('#divContent').pleaseWait('stop');
+                $('#tableUser').DataTable().ajax.reload(null,false);
             });
-            loadDt()
-        },"json")
-        .done(function(){
-            $('#divContent').pleaseWait('stop');
         });
     });
     $(document).on('click','.updateUser',function(){
@@ -392,7 +397,8 @@
                     }
                 }},
                 {data: 'id_pengguna',render:function(data,type,row){
-                    return '<a class="updateUser btn-sm btn-success" data-id='+data+'>Update</a><a class="deleteUser btn-sm btn-danger" data-id='+data+'>Delete</a>';
+                    return '<a class="updateUser btn-sm btn-success" data-id='+data+'>Update</a>'+
+                            '<a class="deleteUser btn-sm btn-danger" data-title="Hapus User ?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"  data-id='+data+'>Delete</a>';
                 }}
             ]
         });
