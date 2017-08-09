@@ -21,7 +21,7 @@ class CreateTableOutboxFax extends Migration
             $table->integer('jumlah_hal');
             $table->date('tanggal_kirim');
             $table->text('hal');
-            $table->text('tembusan');
+            $table->text('tembusan')->nullable();
             $table->string('nama_petugas');
             $table->string('nip');
             $table->string('jabatan_petugas');

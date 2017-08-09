@@ -498,7 +498,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -567,7 +567,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -628,7 +628,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -689,7 +689,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -750,7 +750,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -811,7 +811,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -872,7 +872,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -933,7 +933,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -994,7 +994,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1025,7 +1025,7 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'S.RIKSIS-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        $nomor_surat = 'S-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/RIK.SIS/'.$tanggalInsert;
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1039,7 +1039,7 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'S.RIKSIS-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        $nomor_surat = 'S-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/RIK.SIS/'.$tanggalInsert;
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1055,7 +1055,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1116,7 +1116,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1185,7 +1185,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1246,7 +1246,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1303,7 +1303,7 @@ class DataController extends Controller
                     OutboxFaxModel::create($arrayInsert);
                     $response = array(
                         'message'=>'Data Surat Keluar Fax Berhasil Di Tambahkan',
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1364,7 +1364,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1425,7 +1425,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1486,7 +1486,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1547,7 +1547,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1616,7 +1616,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1687,7 +1687,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1758,7 +1758,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1829,7 +1829,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1894,7 +1894,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -1955,7 +1955,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2016,7 +2016,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2077,7 +2077,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2138,7 +2138,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2199,7 +2199,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2268,7 +2268,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2329,7 +2329,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2390,7 +2390,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2451,7 +2451,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2512,7 +2512,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2573,7 +2573,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2634,7 +2634,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2701,7 +2701,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2762,7 +2762,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2823,7 +2823,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2884,7 +2884,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -2945,7 +2945,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -3006,7 +3006,7 @@ class DataController extends Controller
                     }
                     $response = array(
                         'message'=>'Surat Keluar Berhasil Di Tambahkan dengan Nomor <br>'.$nomor_surat,
-                        'status'=>'success'
+                        'status'=>'info'
                     );
                     return response()->json($response);
                     break;
@@ -3027,13 +3027,13 @@ class DataController extends Controller
         if($type=='1'){
             OutboxFirstModel::destroy($id);
         }else if($type=='2'){
-            OutboxFaxModel::destroy($id);
-        }else if($type=='3'){
             OutboxSecondModel::destroy($id);
+        }else if($type=='3'){
+            OutboxFaxModel::destroy($id);
         }
         $response = array(
             'message'=>'Data Surat Berhasil Di Hapus',
-            'status'=>'success'
+            'status'=>'info'
         );
         return response()->json($response);
     }

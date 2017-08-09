@@ -78,7 +78,7 @@ td.noWrapTd{
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card-box">
+        <div class="card-box" id="crdInbox">
             <h4 class="header-title m-t-0 m-b-30">Navigasi</h4>
             <ul class="nav nav-tabs">
                 <li class="active">
@@ -103,14 +103,52 @@ td.noWrapTd{
             <div class="tab-content">
                 <div class="tab-pane active" id="inputSurat">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="tambahSurat">Tambah Surat</button>
-                            <button type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5" id="resetSurat">Reset</button>
-                            <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="tambahKolom">Tambah Kolom</button>
-                            <button type="button" class="btn btn-default waves-effect w-md waves-light m-b-5" id="simpanSurat">Save</button>
-                        </div>
-                        <div class="col-lg-12" id="divForm">
-                            
+                        <div class="col-lg-6">
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmI')) !!}
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label">Tanggal Terima</label>
+	                                <div class="col-md-10">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control dAC" placeholder="mm/dd/yyyy" name="tanggal_terima">
+                                            <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
+                                        </div>
+	                                </div>
+                                </div>
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label">Tanggal Surat</label>
+	                                <div class="col-md-10">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control dAC" placeholder="mm/dd/yyyy" name="tanggal_surat">
+                                            <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
+                                        </div>
+	                                </div>
+                                </div>
+	                            <div class="form-group">
+	                                <label class="col-md-2 control-label">Nomor Surat</label>
+	                                <div class="col-md-10">
+	                                    <input type="text" class="form-control" name="nomor_surat">
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+	                                <label class="col-md-2 control-label">Asal Surat</label>
+	                                <div class="col-md-10">
+	                                    <input type="text" class="form-control" name="asal_surat">
+	                                </div>
+	                            </div>
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label">Perihal</label>
+	                                <div class="col-md-10">
+	                                    <textarea class="form-control" rows="5" name="perihal"></textarea>
+	                                </div>
+	                            </div>
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label"></label>
+	                                <div class="col-md-10">
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnSvI">Simpan</button>
+                                        <button type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5" id="btnRstI">Reset</button>
+	                                </div>
+	                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -787,17 +825,9 @@ td.noWrapTd{
 
 <script src="{{ url('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/jszip.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/vfs_fonts.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.print.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.colVis.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.fixedColumns.min.js') }}"></script>
 
 <!-- init -->
@@ -814,36 +844,51 @@ td.noWrapTd{
 $(document).ready(function(){
     loadDataInbox()
     loadDataDisposisi()
-    $('#tambahKolom').click(function(){
-        if($('#divForm').length){
-            appendForm()
-        }
+    $('#btnSvI').click(function(){
+        var data = $('#frmI').serialize();
+        $.ajax({
+            url:"{{ url('adm/inbox') }}",
+            data:data,
+            type:'post',
+            dataType:'json',
+            cache:false,
+            beforeSend:function(){
+                $('#crdInbox').pleaseWait();
+            },
+            success:function(response){
+                $.toast({
+                    heading: 'Information',
+                    text: response.message,
+                    position: 'bottom-right',
+                    stack: false,
+                    showHideTransition: 'slide',
+                    icon: response.status
+                });
+                $('#crdInbox').pleaseWait('stop');
+                $('#frmI').trigger('reset');
+                $('#tableInbox').DataTable().ajax.reload(null,false);
+                $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
+            },
+			error:function(xhr,ajaxOptions,thrownError){
+				var error = xhr.responseJSON;
+                var no = 0;
+                var errorArray = [];
+                $.each(error, function (key, value) {
+                    errorArray[no] = value[0];
+                    no++;
+                });
+                $.toast({
+                    heading: 'Error!',
+                    text: errorArray,
+                    icon: 'error',
+                    position: 'bottom-right'
+                });
+                $('#crdInbox').pleaseWait('stop');
+			}
+        });
     });
-    $('#tambahSurat').click(function(){
-        if(!$('#bodyInput').length){
-            var table = '<div class="table-responsive">' +
-                            '{!! Form::open(array("id"=>"formInput")) !!}' + 
-                                '<table class="table m-0 table-colored-bordered table-bordered-primary">' +
-                                    '<thead>' +
-                                        '<tr>' +
-                                            '<th>#</th>' +
-                                            '<th class="col-md-2">Tanggal Terima</th>' +
-                                            '<th class="col-md-2">Tanggal Surat</th>' +
-                                            '<th class="col-md-2">Nomor Surat</th>' +
-                                            '<th class="col-md-3">Asal Surat</th>' +
-                                            '<th class="col-md-3">Perihal</th>' +
-                                        '</tr>' +
-                                    '</thead>' +
-                                    '<tbody id="bodyInput">' +
-                                    '</tbody>' +
-                                '</table>' +
-                            '{!! Form::close() !!}' +
-                        '</div>';
-            $('#divForm').append(table);
-        }
-    });
-    $('#resetSurat').click(function(){
-        $('#bodyInput').empty();
+    $('#btnRstI').click(function(){
+        $('#frmI').trigger('reset');
     });
     $('#prevDisposisi').click(function(){
         var id_surat = $('#nomorAgendaDps').val();
@@ -917,7 +962,7 @@ $(document).ready(function(){
             beforeSend:function(){
                 $('#bodyDisposisiModal').pleaseWait();
             },
-            success:function(){
+            success:function(response){
                 $.post("{{ url('/adm/detailDisposisiPrev') }}",{
                     "_token":"{{ csrf_token() }}",
                     "id":id_surat
@@ -962,14 +1007,21 @@ $(document).ready(function(){
                             heading: 'Kesalahan',
                             text: 'Tidak Ada Surat Sebelum Nomor Agenda Ini',
                             position: 'bottom-right',
-                            stack: false,
+                            stack: 5,
                             showHideTransition: 'slide',
                             icon: 'error'
                         });
                     }
                 },"json").done(function(){
                     $('#bodyDisposisiModal').pleaseWait('stop');
-                    //BUTTON NEXT PREV ENABLE TODO
+                    $.toast({
+                        heading: 'Information',
+                        text: 'Data Surat Disposisi Berhasil Di Simpan',
+                        position: 'bottom-right',
+                        stack: 5,
+                        showHideTransition: 'slide',
+                        icon: 'info'
+                    });
                 });
             },
 			error:function(xhr,ajaxOptions,thrownError){
@@ -986,6 +1038,7 @@ $(document).ready(function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
+                $('#bodyDisposisiModal').pleaseWait('stop');
 			}
         });
     });
@@ -1107,14 +1160,21 @@ $(document).ready(function(){
                             heading: 'Kesalahan',
                             text: 'Tidak Ada Surat Sesudah Nomor Agenda Ini',
                             position: 'bottom-right',
-                            stack: false,
+                            stack: 5,
                             showHideTransition: 'slide',
                             icon: 'error'
                         });
                     }
                 },"json").done(function(){
                     $('#bodyDisposisiModal').pleaseWait('stop');  
-                    //Button Enable NEXT TODO
+                    $.toast({
+                        heading: 'Information',
+                        text: 'Data Surat Disposisi Berhasil Di Simpan',
+                        position: 'bottom-right',
+                        stack: 5,
+                        showHideTransition: 'slide',
+                        icon: 'info'
+                    });
                 });
             },
 			error:function(xhr,ajaxOptions,thrownError){
@@ -1131,6 +1191,7 @@ $(document).ready(function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
+                $('#bodyDisposisiModal').pleaseWait('stop');
 			}
         });
     });
@@ -1203,45 +1264,8 @@ $(document).ready(function(){
             type:'post',
             dataType:'json',
             cache:false,
-            success:function(response){
-                console.log(response);
-            },
-			error:function(xhr,ajaxOptions,thrownError){
-				var error = xhr.responseJSON;
-                var no = 0;
-                var errorArray = [];
-                $.each(error, function (key, value) {
-                    errorArray[no] = value[0];
-                    no++;
-                });
-                $.toast({
-                    heading: 'Error!',
-                    text: errorArray,
-                    icon: 'error',
-                    position: 'bottom-right'
-                });
-			}
-        });
-        
-    });
-    $('#closeModalDisposisi').click(function(){
-        $('#disposisi-modal').modal('hide');
-        $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
-    });
-});
-
-//Simpan Surat
-$(document).on('click','#simpanSurat',function(){
-    if($('.tanggalTerima').length>0){
-        var formInput = $('#formInput').serialize();
-        $.ajax({
-            url:"{{ url('adm/inbox') }}",
-            data:formInput,
-            type:'post',
-            dataType:'json',
-            cache:false,
             beforeSend:function(){
-                $('body').pleaseWait();
+                $('#bodyDisposisiModal').pleaseWait();
             },
             success:function(response){
                 $.toast({
@@ -1252,10 +1276,7 @@ $(document).on('click','#simpanSurat',function(){
                     showHideTransition: 'slide',
                     icon: response.status
                 });
-                $('#divForm').empty();
-                $('body').pleaseWait('stop');
-                $('#tableInbox').DataTable().ajax.reload(null,false);
-                $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
+                $('#bodyDisposisiModal').pleaseWait('stop');
             },
 			error:function(xhr,ajaxOptions,thrownError){
 				var error = xhr.responseJSON;
@@ -1271,49 +1292,16 @@ $(document).on('click','#simpanSurat',function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
+                $('#bodyDisposisiModal').pleaseWait('stop');
 			}
         });
-    }
+        
+    });
+    $('#closeModalDisposisi').click(function(){
+        $('#disposisi-modal').modal('hide');
+        $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
+    });
 });
-
-//Hapus Rows
-$(document).on('click','.hapusRows',function(){
-    $(this).parent().parent().remove();
-});
-$('body').on('focus',".tanggalTerima",function(){
-     $(this).datepicker({
-        format: "dd-mm-yyyy",
-        language: "id",
-        autoclose: true
-    }); 
-});
-$('body').on('change',".tanggalTerima",function(){
-    $('.datepicker').hide();
-});
-
-$('body').on('focus',".tanggalSurat",function(){
-    console.log('test');
-     $(this).datepicker({
-        format: "dd-mm-yyyy",
-        language: "id",
-        autoclose: true
-    }); 
-});
-$('body').on('change',".tanggalSurat",function(){
-    $('.datepicker').hide();
-});
-
-function appendForm(){
-    var input = '<tr>'+
-                    '<th scope="row"><button class="btn btn-icon waves-effect waves-light btn-youtube m-b-5 hapusRows" tabindex="-1"><i class="fa fa-remove"></i></button></th>' +
-                    '<td class="col-md-2"><div class="form-group"><div class="tanggalTerima"><input type="text" class="form-control" name="tanggalTerima[]" required></div></div></td>'+
-                    '<td class="col-md-2"><div class="form-group"><div class="tanggalSurat"><input type="text" class="form-control" name="tanggalSurat[]" required></div></div></td>'+
-                    '<td class="col-md-2"><div class="form-group"><div><input type="text" class="form-control" name="nomorSurat[]" required></div></div></td>'+
-                    '<td class="col-md-3"><div class="form-group"><div><input type="text" class="form-control" name="asalSurat[]" required></div></div></td>'+
-                    '<td class="col-md-3"><div class="form-group"><div><input type="text" class="form-control" name="perihal[]" required></div></div></td>'+
-                '</tr>';
-    $('#bodyInput').append(input);
-}
 
 function loadDataInbox(){
     var table = $('#tableInbox').DataTable({
@@ -1344,7 +1332,6 @@ function loadDataInbox(){
         ]
     });
 }
-
 function loadDataDisposisi(){
     var table = $('#tableInboxDisposisi').DataTable({
         processing:true,
@@ -1534,6 +1521,9 @@ function loadDataDisposisi(){
             {data: function(data,type,dataToSet){
                 return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi btn-block" data-id="' + data.id_surat + '"><i class="mdi mdi-magnify"></i></a>';
             }},
+        ],
+            columnDefs:[
+            {className:"noWrapTd",targets:[2]}
         ]
     });
 }
@@ -1694,5 +1684,11 @@ $(document).keyup(function(e){
     }
 });
 
+</script>
+<script>
+    jQuery('.dAC').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
 </script>
 @endsection

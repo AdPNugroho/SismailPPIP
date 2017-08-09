@@ -34,7 +34,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo"><span>SI<span>PAMA</span></span><i class="mdi mdi-layers"></i></a>
+                    <a href="{{ url('/') }}" class="logo"><span>SI<span>PAMA</span></span><i class="mdi mdi-layers"></i></a>
                 </div>
 
                 <!-- Button mobile view to collapse sidebar menu -->
@@ -97,7 +97,7 @@
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
-                    <div class="container" id="containerContent">
+                    <div class="container" id="cont">
                         <!-- end row -->
 
                         @yield('content')

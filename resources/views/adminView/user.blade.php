@@ -155,7 +155,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="field-1" class="control-label">ID</label>
-                            <input type="text" class="form-control" id="id_pengguna" placeholder="ID" name="id_pengguna">
+                            <input type="text" class="form-control" id="id_pengguna" placeholder="ID" name="id_pengguna" readonly>
                         </div>
                     </div>
                 </div>

@@ -83,48 +83,48 @@ td.noWrapTd{
                             <label class="col-sm-1 control-label">Jenis Surat</label>
                             <div class="col-sm-3">
                                 <select class="form-control" name="jenisSurat" id="jenisSurat">
-                                    <option value="1" data-type="1">BA.TA</option>
-                                    <option value="2" data-type="1">TA</option>
-                                    <option value="3" data-type="1">S</option>
-                                    <option value="4" data-type="1">KET</option>
-                                    <option value="5" data-type="1">ND</option>
-                                    <option value="6" data-type="1">SPR</option>
-                                    <option value="7" data-type="1">NDR</option>
-                                    <option value="8" data-type="1">SP</option>
-                                    <option value="9" data-type="1">SR</option>
-                                    <option value="10" data-type="1">S-RIKSIS</option>
-                                    <option value="11" data-type="1">SI</option>
-                                    <option value="12" data-type="1">WPJ.14</option>
-                                    <option value="13" data-type="1">UND</option>
-                                    <option value="14" data-type="1">ST</option>
+                                    <option value="1" data-type="1" data-form="1">BA.TA</option>
+                                    <option value="2" data-type="1" data-form="1">TA</option>
+                                    <option value="3" data-type="1" data-form="1">S</option>
+                                    <option value="4" data-type="1" data-form="1">KET</option>
+                                    <option value="5" data-type="1" data-form="1">ND</option>
+                                    <option value="6" data-type="1" data-form="1">SPR</option>
+                                    <option value="7" data-type="1" data-form="1">NDR</option>
+                                    <option value="8" data-type="1" data-form="1">SP</option>
+                                    <option value="9" data-type="1" data-form="1">SR</option>
+                                    <option value="10" data-type="1" data-form="1">S-RIKSIS</option>
+                                    <option value="11" data-type="1" data-form="1">SI</option>
+                                    <option value="12" data-type="1" data-form="1">WPJ.14</option>
+                                    <option value="13" data-type="1" data-form="1">UND</option>
+                                    <option value="14" data-type="1" data-form="1">ST</option>
                                     <option value="15" data-type="3">Fax</option>
-                                    <option value="16" data-type="1">LHPPU</option>
-                                    <option value="17" data-type="1">LAP</option>
-                                    <option value="18" data-type="1">LAT</option>
-                                    <option value="19" data-type="1">BA</option>
+                                    <option value="16" data-type="1" data-form="1">LHPPU</option>
+                                    <option value="17" data-type="1" data-form="1">LAP</option>
+                                    <option value="18" data-type="1" data-form="1">LAT</option>
+                                    <option value="19" data-type="1" data-form="1">BA</option>
                                     <option value="20" data-type="2">LII</option>
                                     <option value="21" data-type="2">LAPJU.IDLP</option>
                                     <option value="22" data-type="2">LHPA.IDLP</option>
                                     <option value="23" data-type="2">LIA.IDLP</option>
                                     <option value="24" data-type="2">BA.PEN.IDLP</option>
-                                    <option value="25" data-type="1">BA.PEN</option>
-                                    <option value="26" data-type="1">PRIN.BP</option>
-                                    <option value="27" data-type="1">SPPBP.P</option>
-                                    <option value="28" data-type="1">SPEMB.BP</option>
-                                    <option value="29" data-type="1">PEMB.BP</option>
+                                    <option value="25" data-type="1" data-form="1">BA.PEN</option>
+                                    <option value="26" data-type="1" data-form="1">PRIN.BP</option>
+                                    <option value="27" data-type="1" data-form="1">SPPBP.P</option>
+                                    <option value="28" data-type="1" data-form="1">SPEMB.BP</option>
+                                    <option value="29" data-type="1" data-form="1">PEMB.BP</option>
                                     <option value="30" data-type="2">LAPJU.Penyidikan</option>
-                                    <option value="31" data-type="1">LK.DIK</option>
-                                    <option value="32" data-type="1">PRIN.DIK</option>
-                                    <option value="33" data-type="1">LHPS</option>
-                                    <option value="34" data-type="1">PANG.BP</option>
-                                    <option value="35" data-type="1">LPBP</option>
-                                    <option value="36" data-type="1">DUPAK</option>
-                                    <option value="37" data-type="1">KEPKakanwil</option>
-                                    <option value="38" data-type="1">PRIN.MAT</option>
-                                    <option value="39" data-type="1">INS.MAT</option>
-                                    <option value="40" data-type="1">LAP.MAT</option>
-                                    <option value="41" data-type="1">LHIP</option>
-                                    <option value="42" data-type="1">LAP.ATENSI</option>
+                                    <option value="31" data-type="1" data-form="1">LK.DIK</option>
+                                    <option value="32" data-type="1" data-form="1">PRIN.DIK</option>
+                                    <option value="33" data-type="1" data-form="1">LHPS</option>
+                                    <option value="34" data-type="1" data-form="1">PANG.BP</option>
+                                    <option value="35" data-type="1" data-form="1">LPBP</option>
+                                    <option value="36" data-type="1" data-form="1">DUPAK</option>
+                                    <option value="37" data-type="1" data-form="1">KEPKakanwil</option>
+                                    <option value="38" data-type="1" data-form="1">PRIN.MAT</option>
+                                    <option value="39" data-type="1" data-form="1">INS.MAT</option>
+                                    <option value="40" data-type="1" data-form="1">LAP.MAT</option>
+                                    <option value="41" data-type="1" data-form="1">LHIP</option>
+                                    <option value="42" data-type="1" data-form="1">LAP.ATENSI</option>
                                 </select>
                             </div>
                             <div class="col-md-2">
@@ -151,9 +151,9 @@ td.noWrapTd{
             </ul>
             <div class="tab-content" id="contentTabs" hidden>
                 <div class="tab-pane active" id="inputSurat">
-                    <div class="row" id="FormInputOutboxFirst" hidden>
+                    <div class="row" id="frmA" hidden>
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'FormOutboxFirst')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmInA')) !!}
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label">Tanggal Surat</label>
 	                                <div class="col-md-10">
@@ -196,16 +196,16 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnFormInputOutboxFirst">Simpan</button>
+                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmA">Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="row" id="FormInputOutboxFirstKEPKakanwil" hidden>
+                    <div class="row" id="frmKepK" hidden>
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'FormOutboxFirstKEPKakanwil')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmInKepK')) !!}
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label">Tanggal Surat</label>
 	                                <div class="col-md-10">
@@ -236,16 +236,16 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnFormInputOutboxFirstKEPKakanwil">Simpan</button>
+                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnKepK">Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="row" id="FormInputOutboxFax" hidden>
+                    <div class="row" id="frmF" hidden>
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'FormOutboxFax')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmInF')) !!}
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label">Tanggal Berita Fax</label>
 	                                <div class="col-md-10">
@@ -327,16 +327,16 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnFormInputOutboxFax">Simpan</button>
+                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnF">Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="row" id="FormInputOutboxSecond" hidden>
+                    <div class="row" id="frmBA" hidden>
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'FormOutboxSecond')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmInBA')) !!}
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label">Tanggal Surat</label>
 	                                <div class="col-md-10">
@@ -379,16 +379,16 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnFormInputOutboxSecond">Simpan</button>
+                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmBA">Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="row" id="FormInputOutboxSecondB" hidden>
+                    <div class="row" id="frmBB" hidden>
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'FormOutboxSecondB')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmInBB')) !!}
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label">Tanggal Surat</label>
 	                                <div class="col-md-10">
@@ -425,16 +425,16 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnFormInputOutboxSecondB">Simpan</button>
+                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmBB">Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="row" id="FormInputOutboxSecondBaPenIDLP" hidden>
+                    <div class="row" id="frmC" hidden>
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'FormOutboxSecondBaPenIDLP')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmInC')) !!}
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label">Tanggal Surat</label>
 	                                <div class="col-md-10">
@@ -465,16 +465,16 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnFormInputOutboxSecondBaPenIDLP">Simpan</button>
+                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmC">Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="row" id="FormInputOutboxSecondLhpaIDLP" hidden>
+                    <div class="row" id="frmD" hidden>
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'FormOutboxSecondLhpaIDLP')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmInD')) !!}
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label">Tanggal Surat</label>
 	                                <div class="col-md-10">
@@ -511,7 +511,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnFormInputOutboxSecondLhpaIDLP">Simpan</button>
+                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmD">Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -522,8 +522,8 @@ td.noWrapTd{
                     <div class="row">
                         <div class="col-md-12" id="fieldDataSurat">
 
-                            <div id="divTableDataOutboxFirst" hidden>
-                                <table id="tableDataOutboxFirst" class="table table-striped table-bordered table-hover">
+                            <div id="tbA" hidden>
+                                <table id="dTbA" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -540,8 +540,8 @@ td.noWrapTd{
                                 </table>
                             </div>
 
-                            <div id="divTableDataOutboxKEPKakanwil" hidden>
-                                <table id="tableDataOutboxKEPKakanwil" class="table table-striped table-bordered table-hover">
+                            <div id="tbKepK" hidden>
+                                <table id="dTbKepK" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -556,8 +556,8 @@ td.noWrapTd{
                                 </table>
                             </div>
 
-                            <div id="divTableDataOutboxFax" hidden>
-                                <table id="tableDataOutboxFax" class="table table-striped table-bordered table-hover">
+                            <div id="tbFax" hidden>
+                                <table id="dTbFax" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>Tanggal Berita</th>
@@ -578,8 +578,8 @@ td.noWrapTd{
                                 </table>
                             </div>
 
-                            <div id="divTableDataOutboxSecond-A" hidden>
-                                <table id="tableDataOutboxSecond-A" class="table table-striped table-bordered table-hover">
+                            <div id="tbBA" hidden>
+                                <table id="dTbBA" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="col-sm-1">#</th>
@@ -595,8 +595,8 @@ td.noWrapTd{
                                 </table>
                             </div>
 
-                            <div id="divTableDataOutboxSecond-B" hidden>
-                                <table id="tableDataOutboxSecond-B" class="table table-striped table-bordered table-hover">
+                            <div id="tbBB" hidden>
+                                <table id="dTbBB" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -613,8 +613,8 @@ td.noWrapTd{
                                 </table>
                             </div>
 
-                            <div id="divTableDataOutboxSecondBaPenIDLP" hidden>
-                                <table id="tableDataOutboxSecondBaPenIDLP" class="table table-striped table-bordered table-hover">
+                            <div id="tbC" hidden>
+                                <table id="dTbC" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="col-sm-1">#</th>
@@ -629,8 +629,8 @@ td.noWrapTd{
                                 </table>
                             </div>
 
-                            <div id="divTableDataOutboxSecondLhpaIDLP" hidden>
-                                <table id="tableDataOutboxSecondLhpaIDLP" class="table table-striped table-bordered table-hover">
+                            <div id="tbD" hidden>
+                                <table id="dTbD" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -699,16 +699,16 @@ $(document).ready(function(){
         switch(id){
             case '1':
                 console.log('BA.TA');
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
-                var table = $('#tableDataOutboxFirst').DataTable({
+                $('#frmA').show();
+                $('#cont').pleaseWait();
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ba_ta') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -720,7 +720,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -732,17 +732,17 @@ $(document).ready(function(){
                 break;
             case '2':
                 console.log('TA'); 
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ta') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -754,7 +754,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -766,17 +766,17 @@ $(document).ready(function(){
                 break;
             case '3':
                 console.log('S');
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/s') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -788,7 +788,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -800,17 +800,17 @@ $(document).ready(function(){
                 break;
             case '4':
                 console.log('KET');
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ket') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -822,7 +822,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -834,17 +834,17 @@ $(document).ready(function(){
                 break;
             case '5':
                 console.log('ND');
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/nd') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -856,7 +856,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -869,17 +869,17 @@ $(document).ready(function(){
                 break;
             case '6':
                 console.log('SPR');
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/spr') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -891,7 +891,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -902,17 +902,17 @@ $(document).ready(function(){
                 });
                 break;
             case '7':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ndr') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -924,7 +924,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -935,17 +935,17 @@ $(document).ready(function(){
                 });
                 break;
             case '8':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/sp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -957,7 +957,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -968,17 +968,17 @@ $(document).ready(function(){
                 });
                 break;
             case '9':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/sr') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -990,7 +990,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1001,17 +1001,17 @@ $(document).ready(function(){
                 });
                 break;
             case '10':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/s_riksis') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1023,7 +1023,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1034,17 +1034,17 @@ $(document).ready(function(){
                 });
                 break;
             case '11':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/si') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1056,7 +1056,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1076,17 +1076,17 @@ $(document).ready(function(){
                     icon: 'error',
                     hideAfter: false
                 }); 
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/wpj') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1098,7 +1098,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1109,17 +1109,17 @@ $(document).ready(function(){
                 });
                 break;
             case '13': 
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/und') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1131,7 +1131,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1142,17 +1142,17 @@ $(document).ready(function(){
                 });
                 break;
             case '14':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/st') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1164,7 +1164,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1175,17 +1175,17 @@ $(document).ready(function(){
                 });   
                 break;
             case '15':
-                $('#FormInputOutboxFax').show();
-                $('#containerContent').pleaseWait();
+                $('#frmF').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFax').DataTable({
+                var table = $('#dTbFax').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/fax') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFax').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbFax').show();
                     },
                     columns:[
                         {data:'tanggal_berita_fax'},
@@ -1201,7 +1201,7 @@ $(document).ready(function(){
                         {data:'nama_kasi'},
                         {data:'nip_kasi'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1213,17 +1213,17 @@ $(document).ready(function(){
                 });   
                 break;
             case '16':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lhppu') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1235,7 +1235,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1246,17 +1246,17 @@ $(document).ready(function(){
                 });   
                 break;
             case '17':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lap') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1268,7 +1268,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1279,17 +1279,17 @@ $(document).ready(function(){
                 });   
                 break;
             case '18':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lat') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1301,7 +1301,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1312,17 +1312,17 @@ $(document).ready(function(){
                 });   
                 break;
             case '19':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ba') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1334,7 +1334,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1346,17 +1346,17 @@ $(document).ready(function(){
                 break;
             case '20':
                 //TODO CHECK LII IDLP
-                $('#FormInputOutboxSecondB').show();
-                $('#containerContent').pleaseWait();
+                $('#frmBB').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxSecond-A').DataTable({
+                var table = $('#dTbBA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lii') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxSecond-A').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbBA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1367,7 +1367,7 @@ $(document).ready(function(){
                         {data:'tahun_pajak'},
                         {data:'analis'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1378,17 +1378,17 @@ $(document).ready(function(){
                 });
                 break;
             case '21':
-                $('#FormInputOutboxSecond').show();
-                $('#containerContent').pleaseWait();
+                $('#frmBA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxSecond-B').DataTable({
+                var table = $('#dTbBB').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lapju_idlp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxSecond-B').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbBB').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1400,7 +1400,7 @@ $(document).ready(function(){
                         {data:'analis'},
                         {data:'tindak_lanjut'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1411,17 +1411,17 @@ $(document).ready(function(){
                 });
                 break;
             case '22':
-                $('#FormInputOutboxSecondLhpaIDLP').show();
-                $('#containerContent').pleaseWait();
+                $('#frmD').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxSecondLhpaIDLP').DataTable({
+                var table = $('#dTbD').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lhpa_idlp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxSecondLhpaIDLP').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbD').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1432,7 +1432,7 @@ $(document).ready(function(){
                         {data:'tahun_pajak'},
                         {data:'tindak_lanjut'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1443,17 +1443,17 @@ $(document).ready(function(){
                 });
                 break;
             case '23':
-                $('#FormInputOutboxSecond').show();
-                $('#containerContent').pleaseWait();
+                $('#frmBA').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxSecond-B').DataTable({
+                var table = $('#dTbBB').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lia_idlp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxSecond-B').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbBB').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1465,7 +1465,7 @@ $(document).ready(function(){
                         {data:'analis'},
                         {data:'tindak_lanjut'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1476,17 +1476,17 @@ $(document).ready(function(){
                 });
                 break;
             case '24':
-                $('#FormInputOutboxSecondBaPenIDLP').show();
-                $('#containerContent').pleaseWait();
+                $('#frmC').show();
+                $('#cont').pleaseWait();
                 
-                var table = $('#tableDataOutboxSecondBaPenIDLP').DataTable({
+                var table = $('#dTbC').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ba_pen_idlp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxSecondBaPenIDLP').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbC').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1496,7 +1496,7 @@ $(document).ready(function(){
                         {data:'tahun_pajak'},
                         {data:'kesimpulan'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1508,17 +1508,17 @@ $(document).ready(function(){
                 break;
             case '25':
             //BA.PEN
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ba_pen') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1530,7 +1530,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1542,17 +1542,17 @@ $(document).ready(function(){
                 break;
             case '26':
             //PRIN.BP
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/print_bp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1564,7 +1564,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1575,17 +1575,17 @@ $(document).ready(function(){
                 });
                 break;
             case '27':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/sppbp_p') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1597,7 +1597,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1608,17 +1608,17 @@ $(document).ready(function(){
                 });
                 break;
             case '28':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/spemb_bp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1630,7 +1630,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1641,17 +1641,17 @@ $(document).ready(function(){
                 });
                 break;
             case '29':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/pemb_bp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1663,7 +1663,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1675,17 +1675,17 @@ $(document).ready(function(){
                 break;
             case '30':
             //LAPJU.Penyidikan
-                $('#FormInputOutboxSecondB').show();
-                $('#containerContent').pleaseWait();
+                $('#frmBB').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxSecond-A').DataTable({
+                var table = $('#dTbBA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lapju_penyidikan') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxSecond-A').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbBA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1696,7 +1696,7 @@ $(document).ready(function(){
                         {data:'tahun_pajak'},
                         {data:'analis'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1708,17 +1708,17 @@ $(document).ready(function(){
                 break;
             case '31':
             //LK.DIK
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lk_dik') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1730,7 +1730,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1742,17 +1742,17 @@ $(document).ready(function(){
                 break;
             case '32':
             //PRIN.DIK
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/prin_dik') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1764,7 +1764,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1775,17 +1775,17 @@ $(document).ready(function(){
                 });
                 break;
             case '33':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lhps') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1797,7 +1797,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1808,17 +1808,17 @@ $(document).ready(function(){
                 });
                 break;
             case '34':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/pang_bp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1830,7 +1830,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1841,17 +1841,17 @@ $(document).ready(function(){
                 });
                 break;
             case '35':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lpbp') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1863,7 +1863,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1874,17 +1874,17 @@ $(document).ready(function(){
                 });
                 break;
             case '36':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/dupak') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1896,7 +1896,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1908,16 +1908,16 @@ $(document).ready(function(){
                 break;
             case '37':
             //KEPKakanwil
-                $('#FormInputOutboxFirstKEPKakanwil').show();
-                $('#containerContent').pleaseWait();
-                var table = $('#tableDataOutboxKEPKakanwil').DataTable({
+                $('#frmKepK').show();
+                $('#cont').pleaseWait();
+                var table = $('#dTbKepK').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/kepkakanwil') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxKEPKakanwil').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbKepK').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1927,7 +1927,7 @@ $(document).ready(function(){
                         {data:'perihal_surat'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1938,17 +1938,17 @@ $(document).ready(function(){
                 });
                 break;
             case '38':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/print_mat') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1960,7 +1960,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -1971,17 +1971,17 @@ $(document).ready(function(){
                 });
                 break;
             case '39':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/ins_mat') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -1993,7 +1993,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -2004,17 +2004,17 @@ $(document).ready(function(){
                 });
                 break;
             case '40':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lap_mat') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -2026,7 +2026,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -2037,17 +2037,17 @@ $(document).ready(function(){
                 });
                 break;
             case '41':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lhip') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -2059,7 +2059,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -2070,17 +2070,17 @@ $(document).ready(function(){
                 });
                 break;
             case '42':
-                $('#FormInputOutboxFirst').show();
-                $('#containerContent').pleaseWait();
+                $('#frmA').show();
+                $('#cont').pleaseWait();
 
-                var table = $('#tableDataOutboxFirst').DataTable({
+                var table = $('#dTbA').DataTable({
                     processing:true,
                     serverSide:true,
                     destroy:true,
                     ajax:"{{ url('data/lap_atensi') }}",
                     initComplete:function(){
-                        $('#containerContent').pleaseWait('stop');
-                        $('#divTableDataOutboxFirst').show();
+                        $('#cont').pleaseWait('stop');
+                        $('#tbA').show();
                     },
                     columns:[
                         {data:'nomor_urut'},
@@ -2092,7 +2092,7 @@ $(document).ready(function(){
                         {data:'menjawab'},
                         {data:'kode_seksi_pembuat'},
                         {data:function(data,type,dataToSet){
-                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hapusOutbox" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
+                            return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 hpsOut" data-id="'+ data.id +'" data-title="Hapus Surat Keluar?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"><i class="fa fa-remove"></i> Hapus</a>';
                         }}
                     ],
                     columnDefs:[
@@ -2108,31 +2108,31 @@ $(document).ready(function(){
         }        
     });
     $('#btnResetPilihSurat').click(function(){
-        $('#FormInputOutboxFirst').hide();
-        $('#FormInputOutboxFirstKEPKakanwil').hide();
-        $('#FormInputOutboxFax').hide();
-        $('#FormInputOutboxSecond').hide();
-        $('#FormInputOutboxSecondB').hide();
-        $('#FormInputOutboxSecondBaPenIDLP').hide();
-        $('#FormInputOutboxSecondLhpaIDLP').hide();
+        $('#frmA').hide();
+        $('#frmKepK').hide();
+        $('#frmF').hide();
+        $('#frmBA').hide();
+        $('#frmBB').hide();
+        $('#frmC').hide();
+        $('#frmD').hide();
 
         $('#navTabs').hide();
         $('#contentTabs').hide();
 
-        $('#divTableDataOutboxFirst').hide();
-        $('#divTableDataOutboxKEPKakanwil').hide();
-        $('#divTableDataOutboxFax').hide();
-        $('#divTableDataOutboxSecond-A').hide();
-        $('#divTableDataOutboxSecond-B').hide();
-        $('#divTableDataOutboxSecondBaPenIDLP').hide();
-        $('#divTableDataOutboxSecondLhpaIDLP').hide();
+        $('#tbA').hide();
+        $('#tbKepK').hide();
+        $('#tbFax').hide();
+        $('#tbBA').hide();
+        $('#tbBB').hide();
+        $('#tbC').hide();
+        $('#tbD').hide();
         $('#btnResetPilihSurat').hide();
         $('#btnPilihSurat').show();
         $('#jenisSurat').prop('disabled',false);
     });
 
-    $('#btnFormInputOutboxFirst').click(function(){
-        var data = $('#FormOutboxFirst').serializeArray();
+    $('#btnfrmA').click(function(){
+        var data = $('#frmInA').serializeArray();
         var id = $('#jenisSurat').val();
         data.push({name:'jenis_surat',value:id});
         $.ajax({
@@ -2142,7 +2142,7 @@ $(document).ready(function(){
             dataType:'json',
             cache:false,
             beforeSend:function(){
-                $('#containerContent').pleaseWait();
+                $('#cont').pleaseWait();
             },
             success:function(response){
                 console.log(response);
@@ -2172,15 +2172,15 @@ $(document).ready(function(){
                 });
             },
             complete:function(){
-                 {{--  $('#FormOutboxFirst').trigger('reset');   --}}
-                 $('#tableDataOutboxFirst').DataTable().ajax.reload(null,false);
-                 $('#containerContent').pleaseWait('stop');
+                 {{--  $('#frmInA').trigger('reset');   --}}
+                 $('#dTbA').DataTable().ajax.reload(null,false);
+                 $('#cont').pleaseWait('stop');
             }
         });
         console.log(data);
     });
-    $('#btnFormInputOutboxFirstKEPKakanwil').click(function(){
-        var data = $('#FormOutboxFirstKEPKakanwil').serializeArray();
+    $('#btnKepK').click(function(){
+        var data = $('#frmInKepK').serializeArray();
         var id = $('#jenisSurat').val();
         data.push({name:'jenis_surat',value:id});
         $.ajax({
@@ -2190,7 +2190,7 @@ $(document).ready(function(){
             dataType:'json',
             cache:false,
             beforeSend:function(){
-                $('#containerContent').pleaseWait();
+                $('#cont').pleaseWait();
             },
             success:function(response){
                 console.log(response);
@@ -2221,14 +2221,14 @@ $(document).ready(function(){
                 //TODO
             },
             complete:function(){
-                 {{--  $('#FormOutboxFirstKEPKakanwil').trigger('reset');   --}}
-                 $('#tableDataOutboxKEPKakanwil').DataTable().ajax.reload(null,false);
-                 $('#containerContent').pleaseWait('stop');
+                 {{--  $('#frmInKepK').trigger('reset');   --}}
+                 $('#dTbKepK').DataTable().ajax.reload(null,false);
+                 $('#cont').pleaseWait('stop');
             }
         });
     });
-    $('#btnFormInputOutboxFax').click(function(){
-        var data = $('#FormOutboxFax').serializeArray();
+    $('#btnF').click(function(){
+        var data = $('#frmInF').serializeArray();
         var id = $('#jenisSurat').val();
         data.push({name:'jenis_surat',value:id});
         $.ajax({
@@ -2238,7 +2238,7 @@ $(document).ready(function(){
             dataType:'json',
             cache:false,
             beforeSend:function(){
-                $('#containerContent').pleaseWait();
+                $('#cont').pleaseWait();
             },
             success:function(response){
                 console.log(response);
@@ -2268,63 +2268,15 @@ $(document).ready(function(){
                 });
             },
             complete:function(){
-                 {{--  $('#FormOutboxFax').trigger('reset');   --}}
-                 $('#tableDataOutboxFax').DataTable().ajax.reload(null,false);
-                 $('#containerContent').pleaseWait('stop');
-            }
-        });
-        console.log(data);
-    });
-    $('#btnFormInputOutboxSecond').click(function(){
-        var data = $('#FormOutboxSecond').serializeArray();
-        var id = $('#jenisSurat').val();
-        data.push({name:'jenis_surat',value:id});
-        $.ajax({
-            url:"{{ url('/post/outbox') }}",
-            data:data,
-            type:'post',
-            dataType:'json',
-            cache:false,
-            beforeSend:function(){
-                $('#containerContent').pleaseWait();
-            },
-            success:function(response){
-                console.log(response);
-                 $.toast({
-                    heading: 'Information',
-                    text: response.message,
-                    position: 'bottom-right',
-                    stack: false,
-                    showHideTransition: 'slide',
-                    icon: response.status,
-                    hideAfter: false
-                }); 
-            },
-            error:function(xhr,ajaxOptions,thrownError){
-				var error = xhr.responseJSON;
-                var no = 0;
-                var errorArray = [];
-                $.each(error, function (key, value) {
-                    errorArray[no] = value[0];
-                    no++;
-                });
-                $.toast({
-                    heading: 'Error!',
-                    text: errorArray,
-                    icon: 'error',
-                    position: 'bottom-right'
-                });
-            },
-            complete:function(){
-                 {{--  $('#FormOutboxSecond').trigger('reset');   --}}
-                 $('#tableDataOutboxSecond-B').DataTable().ajax.reload(null,false);
-                 $('#containerContent').pleaseWait('stop');
+                 {{--  $('#frmInF').trigger('reset');   --}}
+                 $('#dTbFax').DataTable().ajax.reload(null,false);
+                 $('#cont').pleaseWait('stop');
             }
         });
         console.log(data);
     });
-    $('#btnFormInputOutboxSecondB').click(function(){
-        var data = $('#FormOutboxSecondB').serializeArray();
+    $('#btnfrmBA').click(function(){
+        var data = $('#frmInBA').serializeArray();
         var id = $('#jenisSurat').val();
         data.push({name:'jenis_surat',value:id});
         $.ajax({
@@ -2334,7 +2286,7 @@ $(document).ready(function(){
             dataType:'json',
             cache:false,
             beforeSend:function(){
-                $('#containerContent').pleaseWait();
+                $('#cont').pleaseWait();
             },
             success:function(response){
                 console.log(response);
@@ -2364,15 +2316,15 @@ $(document).ready(function(){
                 });
             },
             complete:function(){
-                 {{--  $('#FormOutboxSecondB').trigger('reset');   --}}
-                 $('#tableDataOutboxSecond-A').DataTable().ajax.reload(null,false);
-                 $('#containerContent').pleaseWait('stop');
+                 {{--  $('#frmInBA').trigger('reset');   --}}
+                 $('#dTbBB').DataTable().ajax.reload(null,false);
+                 $('#cont').pleaseWait('stop');
             }
         });
         console.log(data);
     });
-    $('#btnFormInputOutboxSecondLhpaIDLP').click(function(){
-        var data = $('#FormOutboxSecondLhpaIDLP').serializeArray();
+    $('#btnfrmBB').click(function(){
+        var data = $('#frmInBB').serializeArray();
         var id = $('#jenisSurat').val();
         data.push({name:'jenis_surat',value:id});
         $.ajax({
@@ -2382,7 +2334,7 @@ $(document).ready(function(){
             dataType:'json',
             cache:false,
             beforeSend:function(){
-                $('#containerContent').pleaseWait();
+                $('#cont').pleaseWait();
             },
             success:function(response){
                 console.log(response);
@@ -2412,15 +2364,15 @@ $(document).ready(function(){
                 });
             },
             complete:function(){
-                 {{--  $('#FormOutboxSecondLhpaIDLP').trigger('reset');   --}}
-                 $('#tableDataOutboxSecondLhpaIDLP').DataTable().ajax.reload(null,false);
-                 $('#containerContent').pleaseWait('stop');
+                 {{--  $('#frmInBB').trigger('reset');   --}}
+                 $('#dTbBA').DataTable().ajax.reload(null,false);
+                 $('#cont').pleaseWait('stop');
             }
         });
         console.log(data);
     });
-    $('#btnFormInputOutboxSecondBaPenIDLP').click(function(){
-        var data = $('#FormOutboxSecondBaPenIDLP').serializeArray();
+    $('#btnfrmD').click(function(){
+        var data = $('#frmInD').serializeArray();
         var id = $('#jenisSurat').val();
         data.push({name:'jenis_surat',value:id});
         $.ajax({
@@ -2430,7 +2382,7 @@ $(document).ready(function(){
             dataType:'json',
             cache:false,
             beforeSend:function(){
-                $('#containerContent').pleaseWait();
+                $('#cont').pleaseWait();
             },
             success:function(response){
                 console.log(response);
@@ -2460,27 +2412,63 @@ $(document).ready(function(){
                 });
             },
             complete:function(){
-                 {{--  $('#FormOutboxSecondBaPenIDLP').trigger('reset');   --}}
-                 $('#tableDataOutboxSecondBaPenIDLP').DataTable().ajax.reload(null,false);
-                 $('#containerContent').pleaseWait('stop');
+                 {{--  $('#frmInD').trigger('reset');   --}}
+                 $('#dTbD').DataTable().ajax.reload(null,false);
+                 $('#cont').pleaseWait('stop');
+            }
+        });
+        console.log(data);
+    });
+    $('#btnfrmC').click(function(){
+        var data = $('#frmInC').serializeArray();
+        var id = $('#jenisSurat').val();
+        data.push({name:'jenis_surat',value:id});
+        $.ajax({
+            url:"{{ url('/post/outbox') }}",
+            data:data,
+            type:'post',
+            dataType:'json',
+            cache:false,
+            beforeSend:function(){
+                $('#cont').pleaseWait();
+            },
+            success:function(response){
+                console.log(response);
+                 $.toast({
+                    heading: 'Information',
+                    text: response.message,
+                    position: 'bottom-right',
+                    stack: false,
+                    showHideTransition: 'slide',
+                    icon: response.status,
+                    hideAfter: false
+                }); 
+            },
+            error:function(xhr,ajaxOptions,thrownError){
+				var error = xhr.responseJSON;
+                var no = 0;
+                var errorArray = [];
+                $.each(error, function (key, value) {
+                    errorArray[no] = value[0];
+                    no++;
+                });
+                $.toast({
+                    heading: 'Error!',
+                    text: errorArray,
+                    icon: 'error',
+                    position: 'bottom-right'
+                });
+            },
+            complete:function(){
+                 {{--  $('#frmInC').trigger('reset');   --}}
+                 $('#dTbC').DataTable().ajax.reload(null,false);
+                 $('#cont').pleaseWait('stop');
             }
         });
         console.log(data);
     });
 });
-$(document).on('click','.detailOutbox',function(){
-    var id = $(this).attr('data-id');
-    var type = $('option:selected','#jenisSurat').attr('data-type');
-    if(type=="1"){
-        $.post("{{ url('') }}");
-    }else if(type=="2"){
-
-    }else if(type=="3"){
-
-    }
-    console.log(id);
-});
-$(document).on('click','.hapusOutbox',function(){
+$(document).on('click','.hpsOut',function(){
     $(this).confirmation('show');
     $(this).on('confirmed.bs.confirmation',function(){
         var id = $(this).attr('data-id');
@@ -2499,20 +2487,20 @@ $(document).on('click','.hapusOutbox',function(){
                 icon: response.status
             });
         },"json").done(function(){
-            if($('#divTableDataOutboxFirst').css('display')=="block"){
-                $('#tableDataOutboxFirst').DataTable().ajax.reload(null,false);
-            }else if($('#divTableDataOutboxKEPKakanwil').css('display')=="block"){
-                $('#tableDataOutboxKEPKakanwil').DataTable().ajax.reload(null,false);
-            }else if($('#divTableDataOutboxFax').css('display')=="block"){
-                $('#tableDataOutboxFax').DataTable().ajax.reload(null,false);
-            }else if($('#divTableDataOutboxSecond-A').css('display')=="block"){
-                $('#tableDataOutboxSecond-A').DataTable().ajax.reload(null,false);
-            }else if($('#divTableDataOutboxSecond-B').css('display')=="block"){
-                $('#tableDataOutboxSecond-B').DataTable().ajax.reload(null,false);
-            }else if($('#divTableDataOutboxSecondBaPenIDLP').css('display')=="block"){
-                $('#tableDataOutboxSecondBaPenIDLP').DataTable().ajax.reload(null,false);
-            }else if($('#divTableDataOutboxSecondLhpaIDLP').css('display')=="block"){
-                $('#tableDataOutboxSecondLhpaIDLP').DataTable().ajax.reload(null,false);
+            if($('#tbA').css('display')=="block"){
+                $('#dTbA').DataTable().ajax.reload(null,false);
+            }else if($('#tbKepK').css('display')=="block"){
+                $('#dTbKepK').DataTable().ajax.reload(null,false);
+            }else if($('#tbFax').css('display')=="block"){
+                $('#dTbFax').DataTable().ajax.reload(null,false);
+            }else if($('#tbBA').css('display')=="block"){
+                $('#dTbBA').DataTable().ajax.reload(null,false);
+            }else if($('#tbBB').css('display')=="block"){
+                $('#dTbBB').DataTable().ajax.reload(null,false);
+            }else if($('#tbC').css('display')=="block"){
+                $('#dTbC').DataTable().ajax.reload(null,false);
+            }else if($('#tbD').css('display')=="block"){
+                $('#dTbD').DataTable().ajax.reload(null,false);
             }
         });
     });
