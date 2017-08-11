@@ -25,7 +25,7 @@ class CreateTableDisposisi extends Migration
             $table->enum('kasi_ketua_kelompok_satu', ['0', '1']);
             $table->enum('kasi_ketua_kelompok_dua', ['0', '1']);
             $table->string('disposisi_lainnya',60)->nullable();
-            $table->text('catatan')->nullable();
+            $table->string('catatan',100)->nullable();
             $table->timestamps();
             $table->foreign('id_surat')
                 ->references('id_surat')

@@ -14,6 +14,8 @@ class AuthController extends Controller
         if($data>0){
             if(password_verify($req['password'],$check[0]['password'])){
                 $dataLogin = PenggunaModel::find($check[0]['id_pengguna']);
+                session(['last_login'=>$check[0]['last_login']]);
+                session(['id_pengguna'=>$check[0]['id_pengguna']]);
                 $date = Carbon::now();
                 $now = Carbon::createFromFormat('Y-m-d H:i:s',$date,'UTC');
                 $now->setTimezone('Asia/Singapore');

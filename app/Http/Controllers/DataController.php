@@ -450,7 +450,7 @@ class DataController extends Controller
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
-                        'tujuan'=>['required'],
+                        'tujuan'=>['required','max:255'],
                         'perihal'=>['required'],
                         'kode_seksi'=>['required']
                     ],$message)->validate();

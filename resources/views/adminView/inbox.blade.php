@@ -1300,6 +1300,7 @@ $(document).ready(function(){
     $('#closeModalDisposisi').click(function(){
         $('#disposisi-modal').modal('hide');
         $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
+        $('#tableInbox').DataTable().ajax.reload(null,false);
     });
 });
 
@@ -1320,7 +1321,7 @@ function loadDataInbox(){
             {data:'asal_surat'},
             {data:'perihal'},
             {data:'id_surat',render:function(data,type,row){
-                return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailInbox" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>'+
+                return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>'+
                         '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 deleteInbox" data-title="Hapus Surat Masuk?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left" data-id="'+ data +'"><i class="fa fa-remove"></i></a>';
             }}
         ],
@@ -1526,9 +1527,6 @@ function loadDataDisposisi(){
             {className:"noWrapTd",targets:[2]}
         ]
     });
-}
-function postDataDisposisi(){
-    
 }
 $(document).on('click','.detailInbox',function(){
     var id = $(this).attr('data-id');

@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,7 +67,6 @@ Route::group(['middleware'=>'adminCheck'],function(){
     Route::post('/adm/detailDisposisi','AdminController@detailDisposisi');
     Route::post('/adm/detailDisposisiNext','AdminController@detailDisposisiNext');
     Route::post('/adm/detailDisposisiPrev','AdminController@detailDisposisiPrev');
-    Route::get('/adm/print/{id}','AdminController@printView');
 
     //Route Admin Data Process Print Batch
     Route::post('/adm/print','AdminController@printBatch');
@@ -109,11 +108,20 @@ Route::group(['middleware'=>'kasiCheck'],function(){
     //Route Kasi
     Route::get('/kasi','KasiController@index');
     Route::get('/kasi/dashboard','KasiController@index');
-    Route::get('/kasi/inbox','KasiController@read_inbox');
+    Route::get('/kasi/acc','KasiController@account');
+    Route::get('/kasi/inbox','KasiController@inbox');
+    Route::get('/kasi/outbox','KasiController@outbox');
+    Route::get('/kasi/chart','KasiController@chart');
     Route::get('/kasi/logout','AuthController@logout');
 
     //Route Kasi Data Process
-    Route::get('/kasi/print/{id}','KasiController@print');
+    Route::post('/kasi/updUsr','KasiController@updateUser');
+    Route::get('/kasi/dataInbox','KasiController@dataInbox');
+    Route::get('/kasi/dataDisposisi','KasiController@dataDisposisi');
+    Route::post('/kasi/detailInbox','KasiController@detailInbox');
+    Route::post('/kasi/next','KasiController@nextInbox');
+    Route::post('/kasi/prev','KasiController@prevInbox');
+    Route::post('/kasi/print','KasiController@printBatch');
 });
 
 //DATA tbl_outbox_first

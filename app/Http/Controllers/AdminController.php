@@ -48,12 +48,6 @@ class AdminController extends Controller
         return view('adminView.outbox');
     }
 
-    public function logout()
-    {
-        $data = PenggunaModel::where('status','!=','1')->get();
-        return $data;
-    }
-
     public function storeAdm(Request $request)
     {
         $data = $request->all();
@@ -385,14 +379,14 @@ class AdminController extends Controller
             'asal_surat.required'=>'Asal Surat Harus Di Isi',
             'asal_surat.max'=>'Asal Surat Maksimal 100 Karakter',
             'perihal.required'=>'Perihal Harus Di Isi',
-            'perihal.max'=>'Perihal Maksimal 255 Karakter'
+            'perihal.max'=>'Perihal Maksimal 500 Karakter'
         );
         Validator::make($getData,[
                 'tanggal_terima'=>['required'],
                 'tanggal_surat' => ['required'],
                 'nomor_surat'=>['required'],
-                'asal_surat'=>['required','max:100'],
-                'perihal'=>['required','max:255']
+                'asal_surat'=>['required','max:150'],
+                'perihal'=>['required','max:500']
         ],$message)->validate();
         $data['tanggal_terima'] = Carbon::parse($getData['tanggal_terima'])->format('Y-m-d');
         $data['tanggal_surat'] = Carbon::parse($getData['tanggal_surat'])->format('Y-m-d');
@@ -448,14 +442,31 @@ class AdminController extends Controller
     public function storeDisposisi(Request $request)
     {
         $getData = $request->all();
+        $message = array(
+            'id_surat.required'=>'ID Surat Harus Di Isi',
+            'id_surat.numeric'=>'ID Surat Harus Berbentuk Angka, Di Larang Merubah Value Dalam InputBox',
+            'tanggal_terima.required'=>'Tanggal Terima Harus Di Isi',
+            'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
+            'nomor_surat.required'=>'Nomor Surat Harus Di Isi',
+            'asal_surat.required'=>'Asal Surat Harus Di Isi',
+            'asal_surat.max'=>'Asal Surat Maksimal 150 Karakter',
+            'perihal.required'=>'Perihal Harus Di Isi',
+            'perihal.max'=>'Perihal Maksimal 500 Karakter',
+            'disposisi_lainnya.max'=>'Maksimal Karakter 60 Untuk Disposisi Lainnya',
+            'sifat_lainnya.max'=>'Maksimal Karakter 60 Untuk Sifat Lainnya',
+            'petunjuk_lainnya'=>'Maksimal Karakter 60 Untuk Petunjuk Lainnya'
+        );
         Validator::make($getData,[
-            'id_surat'=>['required'],
+            'id_surat'=>['required','numeric'],
             'tanggal_terima' => ['required'],
             'tanggal_surat'=>['required'],
             'nomor_surat'=>['required'],
-            'asal_surat'=>['required'],
-            'perihal'=>['required']
-        ])->validate();
+            'asal_surat'=>['required','max:150'],
+            'perihal'=>['required','max:500'],
+            'disposisi_lainnya'=>['max:60'],
+            'sifat_lainnya'=>['max:60'],
+            'petunjuk_lainnya'=>['max:60']
+        ],$message)->validate();
 
         $id = $getData['id_surat'];
         $inbox = InboxModel::find($id);
@@ -523,7 +534,7 @@ class AdminController extends Controller
     public function detailDisposisiNext(Request $request)
     {   
         if($request->ajax()){
-            
+
             $req = $request->all();
             $id = $req['id'];
             $data =  DB::table('tbl_inbox')
@@ -556,10 +567,6 @@ class AdminController extends Controller
             exit("Not an Ajax Request!");
         }
     }
-    public function printPreview($id)
-    {
-
-    }
     public function printBatch(Request $request)
     {
         if(count($request['id_surat_print'])>0){
@@ -571,6 +578,8 @@ class AdminController extends Controller
                         ->join('tbl_petunjuk','tbl_petunjuk.id_surat','=','tbl_inbox.id_surat')
                         ->join('tbl_sifat','tbl_sifat.id_surat','=','tbl_inbox.id_surat')
                         ->first();
+                
+                setlocale(LC_TIME, 'ind');
                 Fpdf::SetTitle('Print Lembar Disposisi');
                 Fpdf::SetMargins(20,10,20);
                 Fpdf::AddPage('P','A4');
@@ -583,12 +592,12 @@ class AdminController extends Controller
                 Fpdf::Cell(0,5,'KEMENTERIAN KEUANGAN REPUBLIK INDONESIA','',2,'C');
                 Fpdf::SetFont('Arial','', 9);
                 Fpdf::Cell(0,5,'DIREKTORAT JENDERAL PAJAK','',2,'C');
-                Fpdf::SetFont('Arial','', 10);
+                Fpdf::SetFont('Arial','', 13);
                 Fpdf::Cell(0,5,'KANWIL DJP KALIMANTAN TIMUR DAN UTARA','',2,'C');
                 Fpdf::SetFont('Arial','', 6);
                 Fpdf::Cell(0,3,'','',2,'C');
                 Fpdf::Cell(0,3,'JALAN RUHUI RAHAYU NOMOR 1 RING ROAD, BALIKPAPAN 76114 KOTAK POS 336','',2,'C');
-                Fpdf::Cell(0,3,'TELEPON (0542) 8860721 FAKSIMILE: (0542) 2260722 SITUS: www.pajak.go.id','',2,'C');
+                Fpdf::Cell(0,3,'TELEPON (0542) 8860721, 8860723 FAKSIMILE: (0542) 2260722 SITUS: www.pajak.go.id','',2,'C');
                 Fpdf::Cell(0,3,'LAYANAN INFORMASI DAN PENGADUAN KRING PAJAK: (021) 150020','',2,'C');
                 Fpdf::Cell(0,3,'EMAIL: pengaduan@pajak.go.id, informasi@pajak.go.id','',1,'C');
                 Fpdf::Cell(0,2,'','',1,'C');
@@ -606,12 +615,12 @@ class AdminController extends Controller
                 Fpdf::SetFont('Arial','B', 9);
                 Fpdf::Cell(40,4.5,'Tanggal Terima','',0,'');
                 Fpdf::Cell(3,4.5,': ','',0,'');
-                Fpdf::Cell(0,4.5,$dt->tanggal_terima,'',1,'');
+                Fpdf::Cell(0,4.5,Carbon::parse($dt->tanggal_terima)->formatLocalized('%A, %d %B %Y'),'',1,'');
 
                 Fpdf::SetFont('Arial','', 9);
                 Fpdf::Cell(40,4.5,'Tanggal Surat','',0,'');
                 Fpdf::Cell(3,4.5,': ','',0,'');
-                Fpdf::Cell(0,4.5,$dt->tanggal_surat,'',1,'');
+                Fpdf::Cell(0,4.5,Carbon::parse($dt->tanggal_surat)->formatLocalized('%A, %d %B %Y'),'',1,'');
 
                 Fpdf::Cell(40,4.5,'Nomor Surat','',0,'');
                 Fpdf::Cell(3,4.5,': ','',0,'');
@@ -619,7 +628,7 @@ class AdminController extends Controller
 
                 Fpdf::Cell(40,4.5,'Asal Surat','',0,'');
                 Fpdf::Cell(3,4.5,': ','',0,'');
-                Fpdf::Cell(0,4.5,$dt->asal_surat,'',1,'');
+                Fpdf::MultiCell(0,4.5,$dt->asal_surat,'',1,'');
                 Fpdf::Cell(40,4.5,'Perihal','',0,'');
                 Fpdf::Cell(3,4.5,': ','',0,'');
                 Fpdf::MultiCell(0,4.5,$dt->perihal,'',1,'');
@@ -629,29 +638,23 @@ class AdminController extends Controller
                 Fpdf::Cell(0,4.5,'SIFAT SURAT:','',1,'');
                 Fpdf::SetFont('Arial','', 9);
                 
-                ($dt->sangat_rahasia=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,101.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,101.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->sangat_rahasia=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Sangat Rahasia','',0,'');
 
-                ($dt->segera=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,101.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,101.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->segera=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Segera','',1,'');
 
-                ($dt->rahasia=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,105.9,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,105.9,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->rahasia=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Rahasia','',0,'');
 
-                ($dt->biasa=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,105.9,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,105.9,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->biasa=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Biasa','',1,'');
                 
-                ($dt->sangat_segera=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,110.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,110.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->sangat_segera=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Sangat Segera','',0,'');
                 
-                ($dt->sifat_lainnya!==null? Fpdf::Image(asset('assets/img/chk.png'),113,110.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,110.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
-                ($dt->sifat_lainnya!==null? Fpdf::Cell(0,4.5,$dt->sifat_lainnya,'',1,'') : Fpdf::Cell(0,4.5,'..................................................................','',1,''));
+                Fpdf::Cell(10,4.5,($dt->sifat_lainnya!==null? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
+                ($dt->sifat_lainnya!==null? Fpdf::MultiCell(0,4.5,$dt->sifat_lainnya,'',1,'') : Fpdf::Cell(0,4.5,'..................................................................','',1,''));
                 
                 Fpdf::Cell(0,6,'','',1,'C');
                 //=====================CHECKBOX SIFAT==============================//
@@ -659,33 +662,26 @@ class AdminController extends Controller
                 Fpdf::Cell(0,4.5,'DISPOSISI KEPALA BIDANG KEPADA:','',1,'');
                 Fpdf::SetFont('Arial','', 9);
 
-                ($dt->kasi_adm_bimbingan=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,125.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,125.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->kasi_adm_bimbingan=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Kasi Administrasi dan Bimbingan Pemeriksaan','',0,'');
 
-                ($dt->kasi_ketua_kelompok_satu=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,125.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,125.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->kasi_ketua_kelompok_satu=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Ketua Kelompok I','',1,'');
 
-                ($dt->kasi_bim_penagihan=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,130,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,130,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->kasi_bim_penagihan=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Kasi Bimbingan Penagihan','',0,'');
 
-                ($dt->kasi_ketua_kelompok_dua=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,130,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,130,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->kasi_ketua_kelompok_dua=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Ketua Kelompok II','',1,'');
 
-                ($dt->kasi_intelijen=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,134.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,134.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->kasi_intelijen=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Kasi Intelijen','',0,'');
 
-                ($dt->disposisi_lainnya!==null ? Fpdf::Image(asset('assets/img/chk.png'),113,134.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,134.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
-                ($dt->disposisi_lainnya!==null? Fpdf::Cell(0,4.5,$dt->disposisi_lainnya,'',1,'') : Fpdf::Cell(0,4.5,'..................................................................','',1,''));
+                Fpdf::Cell(10,4.5,($dt->disposisi_lainnya!==null ? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
+                ($dt->disposisi_lainnya!==null? Fpdf::MultiCell(0,4.5,$dt->disposisi_lainnya,'',1,'') : Fpdf::Cell(0,4.5,'..................................................................','',1,''));
                 
 
-                ($dt->kasi_adm_bukti=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,139,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,139,4,4));            
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->kasi_adm_bukti=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Kasi Administrasi Bukti Permulaan dan Penyidikan','',1,'');
                 
                 Fpdf::Cell(0,6,'','',1,'C');
@@ -693,45 +689,36 @@ class AdminController extends Controller
                 Fpdf::SetFont('Arial','B', 9);
                 Fpdf::Cell(40,4.5,'PETUNJUK:','',1,'');
                 Fpdf::SetFont('Arial','', 9);
-                ($dt->diproses=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,154,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,154,4,4));    
-                Fpdf::Cell(10,4.5,'','',0,'');
+
+                Fpdf::Cell(10,4.5,($dt->diproses=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Diproses','',0,'');
 
-                ($dt->diedarkan=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,154,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,154,4,4));   
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->diedarkan=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Diedarkan/diketahui','',1,'');
 
-                ($dt->ditindaklanjuti=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,158.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,158.5,4,4));    
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->ditindaklanjuti=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Ditindaklanjuti','',0,'');
 
-                ($dt->dipelajari=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,158.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,158.5,4,4));  
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->dipelajari=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Dipelajari/dipedomani','',1,'');
 
-                ($dt->dimanfaatkan=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,163,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,163,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->dimanfaatkan=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Dimanfaatkan','',0,'');
 
-                ($dt->dicatat=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,163,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,163,4,4));  
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->dicatat=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Catat dan Kembali ke Kabid','',1,'');
 
-                ($dt->diadministrasikan=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,167.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,167.5,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->diadministrasikan=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Diadministrasikan (TU)','',0,'');
 
-                ($dt->arsip=='1'? Fpdf::Image(asset('assets/img/chk.png'),113,167.5,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,167.5,4,4));  
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->arsip=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(0,4.5,'Arsip/File','',1,'');
                 
-                ($dt->dipantau=='1'? Fpdf::Image(asset('assets/img/chk.png'),23,172,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),23,172,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
+                Fpdf::Cell(10,4.5,($dt->dipantau=='1'? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
                 Fpdf::Cell(80,4.5,'Dipantau Pelaksanaannya','',0,'');
 
-                ($dt->petunjuk_lainnya!==null ? Fpdf::Image(asset('assets/img/chk.png'),113,172,4,4) : Fpdf::Image(asset('assets/img/unchk.png'),113,172,4,4));
-                Fpdf::Cell(10,4.5,'','',0,'');
-                ($dt->petunjuk_lainnya!==null ? Fpdf::Cell(0,4.5,$dt->petunjuk_lainnya,'',1,'') : Fpdf::Cell(0,4.5,'..................................................................','',1,''));
+                Fpdf::Cell(10,4.5,($dt->petunjuk_lainnya!==null ? Fpdf::Image(asset('assets/img/chk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4) : Fpdf::Image(asset('assets/img/unchk.png'),Fpdf::GetX()+3.5,Fpdf::GetY(),4,4)),'',0,'');
+                ($dt->petunjuk_lainnya!==null ? Fpdf::MultiCell(0,4.5,$dt->petunjuk_lainnya,'',1,'') : Fpdf::Cell(0,4.5,'..................................................................','',1,''));
                 
                 
                 Fpdf::Cell(0,6,'','',1,'C');
@@ -748,28 +735,5 @@ class AdminController extends Controller
         }else{
             return redirect('adm/inbox');
         }
-    }
-
-    public function printBatchBckA(Request $request)
-    {
-        $data = $request['id_surat_print'];
-        foreach($data as $row){
-            $dt =  DB::table('tbl_inbox')
-                    ->where('tbl_inbox.id_surat',$row)
-                    ->join('tbl_disposisi','tbl_disposisi.id_surat','=','tbl_inbox.id_surat')
-                    ->join('tbl_petunjuk','tbl_petunjuk.id_surat','=','tbl_inbox.id_surat')
-                    ->join('tbl_sifat','tbl_sifat.id_surat','=','tbl_inbox.id_surat')
-                    ->get();
-                    
-            Fpdf::AddPage();
-            Fpdf::SetLeftMargin(1);
-            Fpdf::SetLeftMargin(1);
-            Fpdf::Image(asset('assets/img/logo.jpg'),25,20,30,30);
-            Fpdf::SetFont('Arial', 'B', 10);
-            Fpdf::MultiCell(190,5,'LEMBAR DISPOSISI BIDANG PEMERIKSAAN, PENAGIHAN, INTELIJEN DAN PENYIDIKAN',1,'C');
-            Fpdf::SetFont('Arial', '', 10);
-            Fpdf::MultiCell(190,5,'PERHATIAN : Dilarang Memisahkan Sehelai Suratpun yang Tergabung dalam Berkas Ini',1,'C');
-        }
-        return response(Fpdf::Output('I','Print','UTF-8'))->header('Content-Type','application/pdf');
     }
 }

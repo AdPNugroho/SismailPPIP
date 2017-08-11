@@ -37,10 +37,13 @@ $(document).ready(function() {
 			},
 			success:function(response){
 				$('#wrapper').pleaseWait('stop');
+				console.log(response);
 				if(response.status=="success"){
+					console.log('success');
 					$('#doLogin').prop('disabled','true');
-				}else if(response.error="error"){
-					$('#doLogin').prop('disabled','false');
+				}else if(response.status="error"){
+					console.log('error');
+					$('#doLogin').removeAttr('disabled');
 				}
 				$.toast({
                     heading: 'Information',

@@ -22,7 +22,7 @@ class CreateTableSifat extends Migration
             $table->enum('sangat_segera', ['0', '1']);
             $table->enum('segera', ['0', '1']);
             $table->enum('biasa', ['0', '1']);
-            $table->text('sifat_lainnya')->nullable();
+            $table->string('sifat_lainnya',60)->nullable();
             $table->timestamps();
             $table->foreign('id_surat')
                 ->references('id_surat')
