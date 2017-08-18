@@ -17,7 +17,7 @@ class loginCheck
     {
         if(session('level')=="admin"){
             return redirect('/adm');
-        }else if(session('level')=="sec"){
+        }else if(session('level')=="sekre"){
             return redirect('/sec');
         }else if(session('level')=="kasi"){
             return redirect('/kasi');

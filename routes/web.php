@@ -10,10 +10,6 @@ use Illuminate\Http\Response;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('template');
-// });
 Route::group(['middleware'=>'loginCheck'],function(){
     Route::get('/', function () {
         return view('auth.index');
@@ -22,11 +18,7 @@ Route::group(['middleware'=>'loginCheck'],function(){
 // Route Auth
 Route::post('/auth/login','AuthController@login');
 Route::get('/auth/logout','AuthController@logout');
-// ================================================================== // 
-
-Route::resource('surat_masuk', 'InboxController');
-
-Route::get('surat_masuk/print/{id}','InboxController@print');
+// ================================================================== //
 
 Route::group(['middleware'=>'adminCheck'],function(){
     // Route Admin
@@ -36,11 +28,14 @@ Route::group(['middleware'=>'adminCheck'],function(){
     Route::get('/adm/user','AdminController@user_panel');
     Route::get('/adm/inbox','AdminController@inbox_panel');
     Route::get('/adm/outbox','AdminController@outbox_panel');
+    Route::get('/adm/chart','AdminController@chart');
     Route::get('/adm/logout','AuthController@logout');
 
     //Route Admin Data Process
     Route::post('/adm/control','AdminController@storeAdm');
     Route::post('/adm/user','AdminController@storeUser');
+    Route::post('/adm/inbox','AdminController@storeInbox');
+    Route::post('/adm/disposisi','AdminController@storeDisposisi');
 
     // Route Admin Data Ajax
     Route::get('/adm/dataControl','AdminController@dataAdm');
@@ -56,10 +51,6 @@ Route::group(['middleware'=>'adminCheck'],function(){
     Route::post('/adm/deleteUser','AdminController@deleteUser');
     Route::post('/adm/updateUser','AdminController@updateUser');
 
-    //Route Admin Data Process Save
-    Route::post('/adm/inbox','AdminController@storeInbox');
-    Route::post('/adm/disposisi','AdminController@storeDisposisi');
-
     //Route Admin Data Process Delete
     Route::post('/adm/deleteInbox','AdminController@deleteInbox');
     //Route Admin Data Process Get Data
@@ -67,41 +58,34 @@ Route::group(['middleware'=>'adminCheck'],function(){
     Route::post('/adm/detailDisposisi','AdminController@detailDisposisi');
     Route::post('/adm/detailDisposisiNext','AdminController@detailDisposisiNext');
     Route::post('/adm/detailDisposisiPrev','AdminController@detailDisposisiPrev');
-
+    Route::get('/adm/test','AdminController@testData');
     //Route Admin Data Process Print Batch
     Route::post('/adm/print','AdminController@printBatch');
+    Route::post('/adm/export','DataController@exportXls');
 });
 
 Route::group(['middleware'=>'sekreCheck'],function(){
-    // Route Sekre
-    Route::get('/sec','SekreController@index');
-    Route::get('/sec/dashboard','SekreController@index');
+    Route::get('/sec','SekreController@dashboard');
+    Route::get('/sec/dashboard','SekreController@dashboard');
+    Route::get('/sec/acc','SekreController@account');
     Route::get('/sec/inbox','SekreController@inbox');
-    Route::get('/sec/print','SekreController@print');
-    Route::get('/sec/profile','SekreController@profile');
+    Route::get('/sec/outbox','SekreController@outbox');
+    Route::get('/sec/chart','SekreController@chart');
     Route::get('/sec/logout','AuthController@logout');
 
-    Route::post('/sec/disposisi','SekreController@storeDisposisi');
-    //Route Sekre DataTables
-    Route::get('/sec/dataSurat','SekreController@dataSurat');
-    Route::get('/sec/dataDisposisi','SekreController@dataDisposisi');
-
-    //Route Sekre Data Process Save
+    Route::post('/sec/updSec','SekreController@updateSec');
     Route::post('/sec/inbox','SekreController@storeInbox');
-    Route::post('/sec/disposisi','SekreController@storeDisposisi');
-    //Route Sekre Data Process Update
-    
-    //Route Sekre Data Process Delete
     Route::post('/sec/deleteInbox','SekreController@deleteInbox');
-    //Route Sekre Data Process Get Data
-    Route::post('/sec/detailInbox','SekreController@detailInbox');
-    Route::post('/sec/detailDisposisi','SekreController@detailDisposisi');
-    Route::post('/sec/detailDisposisiNext','SekreController@detailDisposisiNext');
-    Route::post('/sec/detailDisposisiPrev','SekreController@detailDisposisiPrev');
-    Route::get('/sec/print/{id}','SekreController@printView');
+    Route::post('/sec/disposisi','SekreController@storeDisposisi');
 
+    Route::get('/sec/dataInbox','SekreController@dataInbox');
+    Route::get('/sec/dataDisposisi','SekreController@dataDisposisi');
+    Route::post('/sec/detailDisposisi','SekreController@detailDisposisi');
+    Route::post('/sec/next','SekreController@nextInbox');
+    Route::post('/sec/prev','SekreController@prevInbox');
     //Route Sekre Data Process Print Batch
     Route::post('/sec/print','SekreController@printBatch');
+    Route::post('/sec/export','DataController@exportXls');
 });
 
 Route::group(['middleware'=>'kasiCheck'],function(){
@@ -122,6 +106,7 @@ Route::group(['middleware'=>'kasiCheck'],function(){
     Route::post('/kasi/next','KasiController@nextInbox');
     Route::post('/kasi/prev','KasiController@prevInbox');
     Route::post('/kasi/print','KasiController@printBatch');
+    Route::post('/kasi/export','DataController@exportXls');
 });
 
 //DATA tbl_outbox_first
@@ -172,9 +157,6 @@ Route::get('/data/lapju_penyidikan','DataController@dataLapjuPenyidikan');
 //DATA tbl_outbox_fax
 Route::get('/data/fax','DataController@dataFax');
 
-
 Route::post('/post/outbox','DataController@dataOutboxPost');
-
-Route::post('/post/detail','DataController@dataOutboxDetail');
 
 Route::post('/outbox/delete','DataController@dataOutboxDelete');

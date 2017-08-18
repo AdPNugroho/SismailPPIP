@@ -19,7 +19,7 @@ class CreateTableInbox extends Migration
             $table->increments('id_surat');
             $table->date('tanggal_terima');
             $table->date('tanggal_surat');
-            $table->string('nomor_surat',40);
+            $table->string('nomor_surat',100);
             $table->string('asal_surat',150);
             $table->text('perihal');
             $table->enum('status', ['1', '2']);

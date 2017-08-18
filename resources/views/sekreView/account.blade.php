@@ -27,24 +27,24 @@
 <ul>
     <li class="menu-title">Navigation</li>
     <li>
-        <a href="{!! url('kasi/dashboard') !!}" class="waves-effect"><i class="mdi mdi-home"></i><span> Dashboard </span></a>
+        <a href="{!! url('sec/dashboard') !!}" class="waves-effect"><i class="mdi mdi-home"></i><span> Dashboard </span></a>
     </li>
     <li>
-        <a href="{!! url('kasi/acc') !!}" class="waves-effect"><i class="mdi mdi-account-key"></i><span> Account Panel </span></a>
+        <a href="{!! url('sec/acc') !!}" class="waves-effect"><i class="mdi mdi-account-key"></i><span> Account Panel </span></a>
     </li>
     <li class="menu-title">Data</li>
     <li>
-        <a href="{!! url('kasi/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
+        <a href="{!! url('sec/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
     </li>
     <li>
-        <a href="{!! url('kasi/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
+        <a href="{!! url('sec/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
     <li>
-        <a href="{!! url('kasi/chart') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Grafik Data Surat </span></a>
+        <a href="{!! url('sec/chart') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Grafik Data Surat </span></a>
     </li>
     <li class="menu-title">Account</li>
     <li>
-        <a href="{!! url('kasi/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
+        <a href="{!! url('sec/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
     </li>
 </ul>    
 @endsection
@@ -56,7 +56,7 @@
             <h4 class="page-title">User Control Panel</h4>
             <ol class="breadcrumb p-0 m-0">
                 <li>
-                    <a href="{{ url('adm/dashboard') }}">Home</a>
+                    <a href="{{ url('sec/dashboard') }}">Home</a>
                 </li>
                 <li class="active">
                     User Control Panel
@@ -82,7 +82,7 @@
                 <div class="tab-pane active" id="dataAcc">
                     <div class="row">
                         <div class="col-md-6">
-                            {!! Form::open(array('class'=>'form-horizontal','id'=>'frmUsr')) !!}
+                            {!! Form::open(array('class'=>'form-horizontal','id'=>'frmSec')) !!}
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Nomor ID</label>
                                 <div class="col-sm-9">
@@ -171,16 +171,15 @@
 <script>
 $(document).ready(function(){
     $('#updAcc').click(function(){
-        var data = $('#frmUsr').serialize();
+        var data = $('#frmSec').serialize();
         $.ajax({
-            url:"{{ url('kasi/updUsr') }}",
+            url:"{{ url('sec/updSec') }}",
             data:data,
             type:'post',
             dataType:'json',
             cache:false,
             beforeSend:function(){
                 $('#cont').pleaseWait();
-                console.log(data);
             },
             success:function(response){
                  $.toast({
@@ -191,8 +190,10 @@ $(document).ready(function(){
                     showHideTransition: 'slide',
                     icon: response.status
                 }); 
+                if(response.status!='error'){
+                    $('#frmSec').trigger('reset');   
+                }
                 $('#cont').pleaseWait('stop');
-                $('#frmUsr').trigger('reset');
             },
             error:function(xhr,ajaxOptions,thrownError){
 				var error = xhr.responseJSON;

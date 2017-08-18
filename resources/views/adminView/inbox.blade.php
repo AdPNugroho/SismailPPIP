@@ -52,6 +52,9 @@ td.noWrapTd{
     <li>
         <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
+    <li>
+        <a href="{!! url('adm/chart') !!}" class="waves-effect"><i class="fa fa-line-chart"></i><span> Grafik Data Surat </span></a>
+    </li>
     <li class="menu-title">Account</li>
     <li>
         <a href="{!! url('adm/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
@@ -82,19 +85,19 @@ td.noWrapTd{
             <h4 class="header-title m-t-0 m-b-30">Navigasi</h4>
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a href="#inputSurat" data-toggle="tab" aria-expanded="true">
+                    <a href="#inputSurat" data-toggle="tab" aria-expanded="true" id="tabsInput">
                         <span class="visible-xs"><i class="fa fa-home"></i></span>
                         <span class="hidden-xs">Input Surat</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="#dataSurat" data-toggle="tab" aria-expanded="false">
+                    <a href="#dataSurat" data-toggle="tab" aria-expanded="false" id="tabsSurat">
                         <span class="visible-xs"><i class="fa fa-user"></i></span>
                         <span class="hidden-xs">Data Surat</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="#dataDisposisi" data-toggle="tab" aria-expanded="false">
+                    <a href="#dataDisposisi" data-toggle="tab" aria-expanded="false" id="tabsDisposisi">
                         <span class="visible-xs"><i class="fa fa-user"></i></span>
                         <span class="hidden-xs">Disposisi</span>
                     </a>
@@ -153,21 +156,21 @@ td.noWrapTd{
                     </div>
                 </div>
                 <div class="tab-pane" id="dataSurat">
-                    <div class="row">
+                    <div class="row" id="divSurat">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'adm/print')) !!}
                             <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="printSurat">Print</button>
                             <table id="tableInbox" class="table table-striped table-bordered table-hover">
-                                <thead>
+                                <thead id="headInbox">
                                     <tr>
-                                        <th class="col-md-1"><center><i class="mdi mdi-printer"></i></center></th>
-                                        <th class="col-md-1"><center>#</center></th>
-                                        <th class="col-md-1">Tanggal Terima</th>
-                                        <th class="col-md-1">Tanggal Surat</th>
-                                        <th class="col-md-3">Nomor Surat</th>
-                                        <th class="col-md-3">Asal Surat</th>
-                                        <th class="col-md-3">Perihal</th>
-                                        <th class="col-md-2">Action</th>
+                                        <th><center><i class="mdi mdi-printer"></i></center></th>
+                                        <th><center>#</center></th>
+                                        <th>Tanggal Terima</th>
+                                        <th>Tanggal Surat</th>
+                                        <th>Nomor Surat</th>
+                                        <th>Asal Surat</th>
+                                        <th>Perihal</th>
+                                        <th><span class="fa fa-wrench"></span></th>
                                     </tr>
                                 </thead>
                             </table>    
@@ -176,12 +179,12 @@ td.noWrapTd{
                     </div>
                 </div>
                 <div class="tab-pane" id="dataDisposisi">
-                    <div class="row">
+                    <div class="row" id="divDisposisi">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'adm/print')) !!}
                             <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5">Print</button>
                             <table id="tableInboxDisposisi" class="table table-striped table-bordered table-hover">
-                                <thead>
+                                <thead id="headDisposisi">
                                     <tr>
                                         <th class="col-sm-1"><center><i class="mdi mdi-printer"></i></center></th>
                                         <th class="col-sm-1">#</th>
@@ -195,7 +198,7 @@ td.noWrapTd{
                                         <th class="col-sm-1">BD701</th>
                                         <th class="col-sm-1">BD702</th>
                                         <th>Lainnya</th>
-                                        <th class="col-sm-1">Action</th>
+                                        <th><span class="fa fa-check-square-o"></span></th>
                                     </tr>
                                 </thead>
                             </table>    
@@ -205,7 +208,6 @@ td.noWrapTd{
                 </div>
             </div>
         </div>
-
         <div id="detail-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content p-0 b-0">
@@ -823,15 +825,13 @@ td.noWrapTd{
 <script src="{{ url('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
 <script src="{{ url('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
+
 <script src="{{ url('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.fixedColumns.min.js') }}"></script>
-
-<!-- init -->
-<script src="{{ url('assets/pages/jquery.datatables.init.js') }}"></script>
 
 <!-- App js -->
 <script src="{{ url('assets/js/jquery.core.js') }}"></script>
@@ -1302,6 +1302,16 @@ $(document).ready(function(){
         $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
         $('#tableInbox').DataTable().ajax.reload(null,false);
     });
+    $('#tabsSurat').click(function(){
+        $('#headInbox').show();
+        $('#headDisposisi').hide();
+        console.log('Tabs tabsSurat');
+    });
+    $('#tabsDisposisi').click(function(){
+        $('#headDisposisi').show();
+        $('#headInbox').hide();
+        console.log('Tabs tabsDisposisi');
+    });
 });
 
 function loadDataInbox(){
@@ -1309,10 +1319,11 @@ function loadDataInbox(){
         processing:true,
         serverSide:true,
         destroy:true,
+        fixedHeader:true,
         ajax:"{{ url('adm/dataInbox') }}",
         columns:[
             {data:'id_surat',render:function(data,type,row){
-                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:20px;height:20px;"></center>';
+                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:18px;height:18px;"></center>';
             }},
             {data:'id_surat'},
             {data:'tanggal_terima'},
@@ -1321,11 +1332,14 @@ function loadDataInbox(){
             {data:'asal_surat'},
             {data:'perihal'},
             {data:'id_surat',render:function(data,type,row){
-                return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>'+
-                        '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 deleteInbox" data-title="Hapus Surat Masuk?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left" data-id="'+ data +'"><i class="fa fa-remove"></i></a>';
+                return '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>'+
+                        '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-youtube m-b-5 deleteInbox" data-title="Hapus Surat Masuk?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left" data-id="'+ data +'"><i class="fa fa-remove"></i></a>';
             }}
         ],
             columnDefs:[
+            { "width": "5%", "targets": 0 },
+            { "width": "5%", "targets": 1 },
+            { "width": "5%", "targets": 7},
             {className:"noWrapTd",targets:[2]},
             {className:"noWrapTd",targets:[3]},
             {className:"noWrapTd",targets:[4]},
@@ -1338,10 +1352,11 @@ function loadDataDisposisi(){
         processing:true,
         serverSide:true,
         destroy:true,
+        fixedHeader:true,
         ajax:"{{ url('adm/dataDisposisi') }}",
         columns:[
             {data:'id_surat',render:function(data,type,row){
-                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:20px;height:20px;"></center>';
+                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:18px;height:18px;"></center>';
             }},
             {data:'id_surat'},
             {data:'nomor_surat'},
@@ -1454,7 +1469,6 @@ function loadDataDisposisi(){
                     }
                 }
                 if(data.petunjuk_lainnya!=""){
-                    console.log("masuk ke sini");
                     if(petunjuk==""){
                         petunjuk += data.petunjuk_lainnya;
                     }else{
@@ -1520,10 +1534,19 @@ function loadDataDisposisi(){
             
             }},
             {data: function(data,type,dataToSet){
-                return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi btn-block" data-id="' + data.id_surat + '"><i class="mdi mdi-magnify"></i></a>';
+                return '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi" data-id="' + data.id_surat + '"><i class="mdi mdi-magnify"></i></a>';
             }},
         ],
             columnDefs:[
+            { "width": "5%", "targets": 0 },
+            { "width": "5%", "targets": 1 },
+            { "width": "5%", "targets": 5 },
+            { "width": "5%", "targets": 6 },
+            { "width": "5%", "targets": 7 },
+            { "width": "5%", "targets": 8 },
+            { "width": "5%", "targets": 9 },
+            { "width": "5%", "targets": 10 },
+            { "width": "5%", "targets": 12 },
             {className:"noWrapTd",targets:[2]}
         ]
     });
@@ -1643,7 +1666,6 @@ $(document).on('click','.detailDisposisi',function(){
         $('body').pleaseWait('stop');
         $('#disposisi-modal').modal('show');
     });
-    //TODO DETAIL DISPOSISI MODAL, MOVE KANAN  KIRI AKSES SURAT
 });
 $(document).on('click','.updateInbox',function(){
     var id = $(this).attr('data-id');
@@ -1673,15 +1695,6 @@ $(document).on('click','.deleteInbox',function(){
         }); 
     });
 });
-
-$(document).keyup(function(e){
-    if(e.keyCode==192){
-        if($('#divForm').length){
-            appendForm()
-        }
-    }
-});
-
 </script>
 <script>
     jQuery('.dAC').datepicker({

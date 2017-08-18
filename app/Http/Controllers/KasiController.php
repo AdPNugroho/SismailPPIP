@@ -49,7 +49,7 @@ class KasiController extends Controller
             'password_lama.required'=>'Password Lama Harus Di Isi',
             'password_baru.required'=>'Password Baru Harus Di Isi',
             'password_baru.min'=>'Password Baru Minimal 5 Karakter',
-            'password_baru.max'=>'Password Baru Minimal 30 Karakter',
+            'password_baru.max'=>'Password Baru Maksimal 30 Karakter',
             'password_baru.confirmed'=>'Input Password Baru Harus Sama'
         );
         Validator::make($data,[

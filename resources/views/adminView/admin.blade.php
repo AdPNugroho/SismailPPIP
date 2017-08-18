@@ -3,13 +3,9 @@
 @section('css')
 <!-- DataTables -->
 <link href="{{ url('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/dataTables.colVis.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/fixedColumns.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
 
 <!-- App css -->
 <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,6 +18,13 @@
 <link rel="stylesheet" href="{{ url('assets/plugins/switchery/switchery.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('/assets/css/jquery.toast.css') }}"> 
+<style>
+td.noWrapTd{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+</style>
 @endsection 
 
 @section('nav')
@@ -42,6 +45,9 @@
     </li>
     <li>
         <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
+    </li>
+    <li>
+        <a href="{!! url('adm/chart') !!}" class="waves-effect"><i class="fa fa-line-chart"></i><span> Grafik Data Surat </span></a>
     </li>
     <li class="menu-title">Account</li>
     <li>
@@ -205,23 +211,11 @@
 <script src="{{ url('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
 
 <script src="{{ url('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/jszip.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/vfs_fonts.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/buttons.print.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.colVis.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.fixedColumns.min.js') }}"></script>
-
-<!-- init -->
-<script src="{{ url('assets/pages/jquery.datatables.init.js') }}"></script>
-
 <!-- App js -->
 <script src="{{ url('assets/js/jquery.core.js') }}"></script>
 <script src="{{ url('assets/js/jquery.app.js') }}"></script>
@@ -242,15 +236,22 @@
             autoWidth: false,
             ajax: "{{ url('adm/dataControl')}}",
             columns: [
-                {data: 'id_pengguna','width':'5%'},
-                {data: 'username','width':'40%'},
-                {data: 'last_login','width':'20%'},
+                {data: 'id_pengguna'},
+                {data: 'username'},
+                {data: 'last_login'},
                 {data: 'id_pengguna',
                     render: function (data, type, row) {
-                        return  '<a class="updateAdmin btn btn-sm btn-icon btn-primary waves-effect waves-light m-b-5" data-id='+data +'><i class="fa fa-mouse-pointer"></i></a>' +
+                        return  '<a class="updateAdmin btn btn-sm btn-icon btn-primary waves-effect waves-light m-b-5" data-id='+data +'><i class="fa fa-wrench"></i></a>' +
                                 '<a class="deleteAdmin btn btn-sm btn-icon btn-youtube waves-effect waves-light m-b-5" data-title="Hapus Admin ?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left" data-id='+data + '><i class="glyphicon glyphicon-trash"></i></a>';
                     },'width':'5%'
                 }
+            ],
+            columnDefs:[
+                { "width": "5%", "targets": 0 },
+                { "width": "5%", "targets": 1 },
+                { "width": "5%", "targets": 3 },
+                {className:"noWrapTd",targets:[1]},
+                {className:"noWrapTd",targets:[-1]}
             ]
         });
     };

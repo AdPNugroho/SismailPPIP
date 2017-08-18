@@ -11,24 +11,26 @@
 
 @endsection
 
-
 @section('nav')
 <ul>
     <li class="menu-title">Navigation</li>
     <li>
-        <a href="{!! url('sec/dashboard') !!}" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Dashboard </span></a>
+        <a href="{!! url('sec/dashboard') !!}" class="waves-effect"><i class="mdi mdi-home"></i><span> Dashboard </span></a>
+    </li>
+    <li>
+        <a href="{!! url('sec/acc') !!}" class="waves-effect"><i class="mdi mdi-account-key"></i><span> Account Panel </span></a>
     </li>
     <li class="menu-title">Data</li>
     <li>
-        <a href="{!! url('sec/inbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Masuk </span></a>
+        <a href="{!! url('sec/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
     </li>
     <li>
         <a href="{!! url('sec/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
-    <li class="menu-title">Account</li>
     <li>
-        <a href="{!! url('sec/profile') !!}" class="waves-effect"><i class="ti ti-user"></i><span> Profile </span></a>
+        <a href="{!! url('sec/chart') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Grafik Data Surat </span></a>
     </li>
+    <li class="menu-title">Account</li>
     <li>
         <a href="{!! url('sec/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
     </li>
@@ -42,10 +44,7 @@
             <h4 class="page-title">Dashboard</h4>
             <ol class="breadcrumb p-0 m-0">
                 <li>
-                    <a href="#">Zircos</a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
+                    <a>Home</a>
                 </li>
                 <li class="active">
                     Dashboard
@@ -56,27 +55,37 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-6 col-md-6">
+    <div class="col-lg-4">
         <div class="card-box widget-box-two widget-two-default">
-            <i class="mdi mdi-account-star-variant widget-two-icon"></i>
+            <i class="mdi mdi-account-key widget-two-icon"></i>
             <div class="wigdet-two-content">
-                <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Total Surat Keluar</p>
-                <h2><span data-plugin="counterup">34578</span> <small></small></h2>
+                <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Last Login</p>
+                <h2><span>{{ $last_login }}</span> <small></small></h2>
                 <p class="text-muted m-0"><b>&nbsp;</b></p>
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-6">
+    <div class="col-lg-4">
         <div class="card-box widget-box-two widget-two-default">
             <i class="mdi mdi-email widget-two-icon"></i>
             <div class="wigdet-two-content">
                 <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Total Surat Masuk</p>
-                <h2><span data-plugin="counterup">{{ $inbox }}</span> <small></small></h2>
+                <h2><span data-plugin="counterup">{{ $surat_masuk }}</span> <small></small></h2>
                 <p class="text-muted m-0"><b>&nbsp;</b></p>
             </div>
         </div>
     </div>
 
+    <div class="col-lg-4">
+        <div class="card-box widget-box-two widget-two-default">
+            <i class="mdi mdi-email widget-two-icon"></i>
+            <div class="wigdet-two-content">
+                <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Total Surat Keluar</p>
+                <h2><span data-plugin="counterup">{{ $surat_keluar }}</span> <small></small></h2>
+                <p class="text-muted m-0"><b>&nbsp;</b></p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
@@ -87,34 +96,24 @@
                 <li class="active">
                     <a href="#home" data-toggle="tab" aria-expanded="true">
                         <span class="visible-xs"><i class="fa fa-home"></i></span>
-                        <span class="hidden-xs">Home</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="#profile" data-toggle="tab" aria-expanded="false">
-                        <span class="visible-xs"><i class="fa fa-user"></i></span>
-                        <span class="hidden-xs">Profile</span>
+                        <span class="hidden-xs">Information</span>
                     </a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                        felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
-                        a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus.
-                        Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
-                        consequat vitae, eleifend ac, enim.</p>
-                </div>
-                <div class="tab-pane" id="profile">
-                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
-                        a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus.
-                        Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
-                        consequat vitae, eleifend ac, enim.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                        felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                    <p><h3>Anda Telah Login Sebagai Sekre</h3></p>
+                    <p>
+                        Hak akses yang diberikan kepada anda adalah sebagai berikut :
+                        <ul>
+                            <li>Mengelola Akun Sekre</li>
+                            <li>Mengelola Data Surat Masuk Dan Keluar</li>
+                            <li>Melihat Data Surat Masuk Dan Keluar</li>
+                            <li>Melihat Data Grafik Surat</li>
+                            <li>Export Data Surat Kedalam Excel</li>
+                            <li>Mencetak Lembar Disposisi</li>
+                        </ul>
+                    </p>
                 </div>
             </div>
         </div>

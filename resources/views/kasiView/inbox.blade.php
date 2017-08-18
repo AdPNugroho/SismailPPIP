@@ -4,18 +4,24 @@
 
 <!-- DataTables -->
 <link href="{{ url('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/dataTables.colVis.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url('assets/plugins/datatables/fixedColumns.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
 <!-- App css -->
 <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/css/core.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/css/components.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/css/icons.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url('assets/css/pages.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/css/menu.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ url('assets/plugins/switchery/switchery.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('/assets/css/jquery.toast.css') }}"> 
 <style>
@@ -76,13 +82,13 @@ td.noWrapTd{
             <h4 class="header-title m-t-0 m-b-30">Navigasi</h4>
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a href="#dataSurat" data-toggle="tab" aria-expanded="false">
+                    <a href="#dataSurat" data-toggle="tab" aria-expanded="false" id="tabsSurat">
                         <span class="visible-xs"><i class="fa fa-user"></i></span>
                         <span class="hidden-xs">Data Surat</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="#dataDisposisi" data-toggle="tab" aria-expanded="false">
+                    <a href="#dataDisposisi" data-toggle="tab" aria-expanded="false" id="tabsDisposisi">
                         <span class="visible-xs"><i class="fa fa-user"></i></span>
                         <span class="hidden-xs">Disposisi</span>
                     </a>
@@ -90,7 +96,7 @@ td.noWrapTd{
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="dataSurat">
-                    <div class="row">
+                    <div class="row" id="divSurat">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'kasi/print')) !!}
                             <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="printSurat">Print</button>
@@ -113,7 +119,7 @@ td.noWrapTd{
                     </div>
                 </div>
                 <div class="tab-pane" id="dataDisposisi">
-                    <div class="row">
+                    <div class="row" id="divDisposisi">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'kasi/print')) !!}
                             <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5">Print</button>
@@ -644,6 +650,14 @@ $(document).ready(function(){
             $('#mdlPnl').pleaseWait('stop');
         });
     });
+    $('#tabsSurat').click(function(){
+        $('#tblInbox').show();
+        $('#tblDsp').hide(); 
+    });
+    $('#tabsDisposisi').click(function(){
+        $('#tblDsp').show();
+        $('#tblInbox').hide();
+    });
 });
 $(document).on('click','.detailInbox',function(){
     var id = $(this).attr('data-id');
@@ -719,6 +733,7 @@ function loadInbox(){
         processing:true,
         serverSide:true,
         destroy:true,
+        fixedHeader: true,
         ajax:"{{ url('kasi/dataInbox') }}",
         columns:[
             {data:'id_surat',render:function(data,type,row){
@@ -731,7 +746,7 @@ function loadInbox(){
             {data:'asal_surat'},
             {data:'perihal'},
             {data:'id_surat',render:function(data,type,row){
-                return '<a class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailInbox" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>';
+                return '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailInbox" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>';
             }}
         ],
             columnDefs:[
@@ -750,6 +765,7 @@ function loadDisposisi(){
         processing:true,
         serverSide:true,
         destroy:true,
+        fixedHeader: true,
         ajax:"{{ url('kasi/dataDisposisi') }}",
         columns:[
             {data:'id_surat',render:function(data,type,row){
@@ -932,7 +948,7 @@ function loadDisposisi(){
             
             }},
             {data: function(data,type,dataToSet){
-                return '<a class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailInbox" data-id="' + data.id_surat + '"><i class="mdi mdi-magnify"></i></a>';
+                return '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailInbox" data-id="' + data.id_surat + '"><i class="mdi mdi-magnify"></i></a>';
             }},
         ],
             columnDefs:[

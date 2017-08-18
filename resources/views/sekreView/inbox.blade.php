@@ -10,7 +10,6 @@
 <link href="{{ url('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/dataTables.colVis.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/fixedColumns.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
 <!-- App css -->
@@ -24,25 +23,35 @@
 <link rel="stylesheet" href="{{ url('assets/plugins/switchery/switchery.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('/assets/css/jquery.toast.css') }}"> 
+<style>
+td.noWrapTd{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+</style>
 @endsection 
 
 @section('nav')
 <ul>
     <li class="menu-title">Navigation</li>
     <li>
-        <a href="{!! url('sec/dashboard') !!}" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Dashboard </span></a>
+        <a href="{!! url('sec/dashboard') !!}" class="waves-effect"><i class="mdi mdi-home"></i><span> Dashboard </span></a>
+    </li>
+    <li>
+        <a href="{!! url('sec/acc') !!}" class="waves-effect"><i class="mdi mdi-account-key"></i><span> Account Panel </span></a>
     </li>
     <li class="menu-title">Data</li>
     <li>
-        <a href="{!! url('sec/inbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Masuk </span></a>
+        <a href="{!! url('sec/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
     </li>
     <li>
         <a href="{!! url('sec/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
-    <li class="menu-title">Account</li>
     <li>
-        <a href="{!! url('sec/profile') !!}" class="waves-effect"><i class="ti ti-user"></i><span> Profile </span></a>
+        <a href="{!! url('sec/chart') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Grafik Data Surat </span></a>
     </li>
+    <li class="menu-title">Account</li>
     <li>
         <a href="{!! url('sec/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
     </li>
@@ -56,13 +65,10 @@
             <h4 class="page-title">Kelola Surat Masuk</h4>
             <ol class="breadcrumb p-0 m-0">
                 <li>
-                    <a href="#">Zircos</a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
+                    <a href="{{ url('adm/dashboard') }}">Home</a>
                 </li>
                 <li class="active">
-                    Dashboard
+                    Surat Masuk
                 </li>
             </ol>
             <div class="clearfix"></div>
@@ -71,7 +77,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card-box">
+        <div class="card-box" id="crdInbox">
             <h4 class="header-title m-t-0 m-b-30">Navigasi</h4>
             <ul class="nav nav-tabs">
                 <li class="active">
@@ -81,13 +87,13 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="#dataSurat" data-toggle="tab" aria-expanded="false">
+                    <a href="#dataSurat" data-toggle="tab" aria-expanded="false" id="tabsSurat">
                         <span class="visible-xs"><i class="fa fa-user"></i></span>
                         <span class="hidden-xs">Data Surat</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="#dataDisposisi" data-toggle="tab" aria-expanded="false">
+                    <a href="#dataDisposisi" data-toggle="tab" aria-expanded="false" id="tabsDisposisi">
                         <span class="visible-xs"><i class="fa fa-user"></i></span>
                         <span class="hidden-xs">Disposisi</span>
                     </a>
@@ -96,14 +102,52 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="inputSurat">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="tambahSurat">Tambah Surat</button>
-                            <button type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5" id="resetSurat">Reset</button>
-                            <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="tambahKolom">Tambah Kolom</button>
-                            <button type="button" class="btn btn-default waves-effect w-md waves-light m-b-5" id="simpanSurat">Save</button>
-                        </div>
-                        <div class="col-lg-12" id="divForm">
-                            
+                        <div class="col-lg-6">
+                            {!! Form::open(array('class'=>'form-horizontal','role'=>'form','id'=>'frmI')) !!}
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label">Tanggal Terima</label>
+	                                <div class="col-md-10">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control dAC" placeholder="mm/dd/yyyy" name="tanggal_terima">
+                                            <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
+                                        </div>
+	                                </div>
+                                </div>
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label">Tanggal Surat</label>
+	                                <div class="col-md-10">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control dAC" placeholder="mm/dd/yyyy" name="tanggal_surat">
+                                            <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
+                                        </div>
+	                                </div>
+                                </div>
+	                            <div class="form-group">
+	                                <label class="col-md-2 control-label">Nomor Surat</label>
+	                                <div class="col-md-10">
+	                                    <input type="text" class="form-control" name="nomor_surat">
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+	                                <label class="col-md-2 control-label">Asal Surat</label>
+	                                <div class="col-md-10">
+	                                    <input type="text" class="form-control" name="asal_surat">
+	                                </div>
+	                            </div>
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label">Perihal</label>
+	                                <div class="col-md-10">
+	                                    <textarea class="form-control" rows="5" name="perihal"></textarea>
+	                                </div>
+	                            </div>
+                                <div class="form-group">
+	                                <label class="col-md-2 control-label"></label>
+	                                <div class="col-md-10">
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnSvI">Simpan</button>
+                                        <button type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5" id="btnRstI">Reset</button>
+	                                </div>
+	                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -111,18 +155,18 @@
                     <div class="row">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'sec/print')) !!}
-                            <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="printSurat">Print</button>
-                            <table id="tableInbox" class="table table-striped table-bordered table-hover">
-                                <thead>
+                            <button type="submit" class="btn btn-sm btn-primary waves-effect w-md waves-light m-b-5" id="printSurat"><span class="fa fa-print"></span>&nbsp;&nbsp;Print</button>
+                            <table id="tblInbox" class="table table-striped table-bordered table-hover">
+                                <thead id="headInbox">
                                     <tr>
-                                        <th class="col-md-1"><center><i class="mdi mdi-printer"></i></center></th>
-                                        <th class="col-md-1"><center>#</center></th>
-                                        <th class="col-md-1">Tanggal Terima</th>
-                                        <th class="col-md-1">Tanggal Surat</th>
-                                        <th class="col-md-3">Nomor Surat</th>
-                                        <th class="col-md-3">Asal Surat</th>
-                                        <th class="col-md-3">Perihal</th>
-                                        <th class="col-md-2">Action</th>
+                                        <th><center><i class="mdi mdi-printer"></i></center></th>
+                                        <th><center>#</center></th>
+                                        <th>Tanggal Terima</th>
+                                        <th>Tanggal Surat</th>
+                                        <th>Nomor Surat</th>
+                                        <th>Asal Surat</th>
+                                        <th>Perihal</th>
+                                        <th><span class="fa fa-wrench"></span></th>
                                     </tr>
                                 </thead>
                             </table>    
@@ -134,23 +178,23 @@
                     <div class="row">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'sec/print')) !!}
-                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5">Print</button>
-                            <table id="tableInboxDisposisi" class="table table-striped table-bordered table-hover">
-                                <thead>
+                            <button type="submit" class="btn btn-sm btn-primary waves-effect w-md waves-light m-b-5"><span class="fa fa-print"></span>&nbsp;&nbsp;Print</button>
+                            <table id="tblDisposisi" class="table table-striped table-bordered table-hover">
+                                <thead id="headDisposisi">
                                     <tr>
-                                        <th class="col-sm-1"><center><i class="mdi mdi-printer"></i></center></th>
-                                        <th class="col-sm-1">#</th>
+                                        <th><center><i class="mdi mdi-printer"></i></center></th>
+                                        <th>#</th>
                                         <th>Nomor Surat</th>
                                         <th>Sifat</th>
                                         <th>Petunjuk</th>
-                                        <th class="col-sm-1">BD401</th>
-                                        <th class="col-sm-1">BD402</th>
-                                        <th class="col-sm-1">BD403</th>
-                                        <th class="col-sm-1">BD404</th>
-                                        <th class="col-sm-1">BD701</th>
-                                        <th class="col-sm-1">BD702</th>
+                                        <th>BD401</th>
+                                        <th>BD402</th>
+                                        <th>BD403</th>
+                                        <th>BD404</th>
+                                        <th>BD701</th>
+                                        <th>BD702</th>
                                         <th>Lainnya</th>
-                                        <th class="col-sm-1">Action</th>
+                                        <th><span class="fa fa-check-square-o"></span></th>
                                     </tr>
                                 </thead>
                             </table>    
@@ -447,7 +491,6 @@
                                 </form>
                             </div>
                         </div>
-
                         <div class="panel-footer">
                             <button type="button" class="btn btn-googleplus waves-effect" data-dismiss="modal">Close</button>
                         </div>
@@ -463,7 +506,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h3 class="panel-title">Lembar Disposisi Surat Masuk</h3>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" id="bodyDisposisiModal">
                             <div class="col-md-12">
                                 <form class="form-horizontal" role="form">
                                     <div class="form-group">
@@ -731,7 +774,7 @@
                             <button type="button" class="btn btn-default btn-icon btn-sm waves-effect" id="prevDisposisi"><i class="mdi mdi-arrow-left"></i>Previous</button>
                             <button type="button" class="btn btn-googleplus waves-effect btn-sm" id="closeModalDisposisi">Close</button>
                             <button type="button" class="btn btn-success waves-effect btn-sm" id="saveDisposisi">Save</button>
-                            <button type="button" class="btn btn-default btn-icon btn-sm waves-effect" id="nextDisposisi"><i class="mdi mdi-arrow-right"></i>Next</button>
+                            <button type="button" class="btn btn-default btn-icon btn-sm waves-effect" id="nextDisposisi">Next<i class="mdi mdi-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -766,6 +809,7 @@
 <!-- jQuery  -->
 <script src="{{ url('assets/js/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ url('assets/js/bootstrap-confirmation.min.js') }}"></script>
 <script src="{{ url('assets/js/detect.js') }}"></script>
 <script src="{{ url('assets/js/fastclick.js') }}"></script>
 <script src="{{ url('assets/js/jquery.blockUI.js') }}"></script>
@@ -780,62 +824,71 @@
 
 <script src="{{ url('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/jszip.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/vfs_fonts.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.print.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.colVis.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.fixedColumns.min.js') }}"></script>
-
-<!-- init -->
-<script src="{{ url('assets/pages/jquery.datatables.init.js') }}"></script>
 
 <!-- App js -->
 <script src="{{ url('assets/js/jquery.core.js') }}"></script>
 <script src="{{ url('assets/js/jquery.app.js') }}"></script>
 
+<script type="text/javascript" src="{{ asset('assets/js/jquery.pleaseWait.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.toast.js') }}"></script>
-
 <script>
 $(document).ready(function(){
-    loadDataInbox()
-    loadDataDisposisi()
-    $('#tambahKolom').click(function(){
-        if($('#divForm').length){
-            appendForm()
-        }
+    loadInbox()
+    loadDisposisi()
+    $('#btnSvI').click(function(){
+        var data = $('#frmI').serialize();
+        $.ajax({
+            url:"{{ url('sec/inbox') }}",
+            data:data,
+            type:'post',
+            dataType:'json',
+            cache:false,
+            beforeSend:function(){
+                $('#crdInbox').pleaseWait();
+            },
+            success:function(response){
+                $.toast({
+                    heading: 'Information',
+                    text: response.message,
+                    position: 'bottom-right',
+                    stack: false,
+                    showHideTransition: 'slide',
+                    icon: response.status
+                });
+                $('#crdInbox').pleaseWait('stop');
+                $('#frmI').trigger('reset');
+                $('#tblInbox').DataTable().ajax.reload(null,false);
+                $('#tblDisposisi').DataTable().ajax.reload(null,false);
+            },
+			error:function(xhr,ajaxOptions,thrownError){
+				var error = xhr.responseJSON;
+                var no = 0;
+                var errorArray = [];
+                $.each(error, function (key, value) {
+                    errorArray[no] = value[0];
+                    no++;
+                });
+                $.toast({
+                    heading: 'Error!',
+                    text: errorArray,
+                    icon: 'error',
+                    position: 'bottom-right'
+                });
+                $('#crdInbox').pleaseWait('stop');
+			}
+        });
     });
-    $('#tambahSurat').click(function(){
-        if(!$('#bodyInput').length){
-            var table = '<div class="table-responsive">' +
-                            '{!! Form::open(array("id"=>"formInput")) !!}' + 
-                                '<table class="table m-0 table-colored-bordered table-bordered-primary">' +
-                                    '<thead>' +
-                                        '<tr>' +
-                                            '<th>#</th>' +
-                                            '<th class="col-md-2">Tanggal Terima</th>' +
-                                            '<th class="col-md-2">Tanggal Surat</th>' +
-                                            '<th class="col-md-2">Nomor Surat</th>' +
-                                            '<th class="col-md-3">Asal Surat</th>' +
-                                            '<th class="col-md-3">Perihal</th>' +
-                                        '</tr>' +
-                                    '</thead>' +
-                                    '<tbody id="bodyInput">' +
-                                    '</tbody>' +
-                                '</table>' +
-                            '{!! Form::close() !!}' +
-                        '</div>';
-            $('#divForm').append(table);
-        }
+    $('#btnRstI').click(function(){
+        $('#frmI').trigger('reset');
     });
-    $('#resetSurat').click(function(){
-        $('#bodyInput').empty();
+    $('#closeModalDisposisi').click(function(){
+        $('#disposisi-modal').modal('hide');
+        $('#tblDisposisi').DataTable().ajax.reload(null,false);
+        $('#tblInbox').DataTable().ajax.reload(null,false);
     });
     $('#prevDisposisi').click(function(){
         var id_surat = $('#nomorAgendaDps').val();
@@ -906,12 +959,14 @@ $(document).ready(function(){
             type:'post',
             dataType:'json',
             cache:false,
-            success:function(){
-                $.post("{{ url('/sec/detailDisposisiPrev') }}",{
+            beforeSend:function(){
+                $('#bodyDisposisiModal').pleaseWait();
+            },
+            success:function(response){
+                $.post("{{ url('/sec/prev') }}",{
                     "_token":"{{ csrf_token() }}",
                     "id":id_surat
                 },function(response){
-                    console.log(response);
                     if(response.length){
                         $.each(response,function(i,item){
                             $('#nomorAgendaDps').val(item.id_surat);
@@ -951,13 +1006,21 @@ $(document).ready(function(){
                             heading: 'Kesalahan',
                             text: 'Tidak Ada Surat Sebelum Nomor Agenda Ini',
                             position: 'bottom-right',
-                            stack: false,
+                            stack: 5,
                             showHideTransition: 'slide',
                             icon: 'error'
                         });
                     }
                 },"json").done(function(){
-                    //BUTTON NEXT PREV ENABLE TODO
+                    $('#bodyDisposisiModal').pleaseWait('stop');
+                    $.toast({
+                        heading: 'Information',
+                        text: 'Data Surat Disposisi Berhasil Di Simpan',
+                        position: 'bottom-right',
+                        stack: 5,
+                        showHideTransition: 'slide',
+                        icon: 'info'
+                    });
                 });
             },
 			error:function(xhr,ajaxOptions,thrownError){
@@ -974,10 +1037,8 @@ $(document).ready(function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
-			},complete:function(){
-                //JIKA SUDAH SELESAI UPDATE DATA DISPOSISI, CARI DATA DISPOSISI SEBELUM NOMOR AGENDA
-                
-            }
+                $('#bodyDisposisiModal').pleaseWait('stop');
+			}
         });
     });
     $('#nextDisposisi').click(function(){
@@ -1049,9 +1110,12 @@ $(document).ready(function(){
             type:'post',
             dataType:'json',
             cache:false,
+            beforeSend:function(){
+                $('#bodyDisposisiModal').pleaseWait();
+            },
             success:function(response){
                 console.log(response);
-                $.post("{{ url('/sec/detailDisposisiNext') }}",{
+                $.post("{{ url('/sec/next') }}",{
                     "_token":"{{ csrf_token() }}",
                     "id":id_surat
                 },function(response){
@@ -1089,19 +1153,27 @@ $(document).ready(function(){
                             item.dicatat==1             ? $('#petunjukCatatDps').prop('checked', true)             : $('#petunjukCatatDps').prop('checked', false);
                             item.arsip==1               ? $('#petunjukArsipDps').prop('checked', true)             : $('#petunjukArsipDps').prop('checked', false);
                             item.petunjuk_lainnya!==null   ? $('#labelPetunjukLainnyaDps').val(item.petunjuk_lainnya) : $('#labelPetunjukLainnyaDps').val('');
-                        }); 
+                        });   
                     }else{
                         $.toast({
                             heading: 'Kesalahan',
                             text: 'Tidak Ada Surat Sesudah Nomor Agenda Ini',
                             position: 'bottom-right',
-                            stack: false,
+                            stack: 5,
                             showHideTransition: 'slide',
                             icon: 'error'
                         });
                     }
                 },"json").done(function(){
-                    //Button Enable NEXT TODO
+                    $('#bodyDisposisiModal').pleaseWait('stop');  
+                    $.toast({
+                        heading: 'Information',
+                        text: 'Data Surat Disposisi Berhasil Di Simpan',
+                        position: 'bottom-right',
+                        stack: 5,
+                        showHideTransition: 'slide',
+                        icon: 'info'
+                    });
                 });
             },
 			error:function(xhr,ajaxOptions,thrownError){
@@ -1118,9 +1190,8 @@ $(document).ready(function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
-			},complete:function(){
-                //JIKA SUDAH SELESAI UPDATE DATA DISPOSISI, CARI DATA DISPOSISI SURAT AGENDA SELANJUTNYA
-            }
+                $('#bodyDisposisiModal').pleaseWait('stop');
+			}
         });
     });
     $('#saveDisposisi').click(function(){
@@ -1192,43 +1263,9 @@ $(document).ready(function(){
             type:'post',
             dataType:'json',
             cache:false,
-            success:function(response){
-                console.log(response);
+            beforeSend:function(){
+                $('#bodyDisposisiModal').pleaseWait();
             },
-			error:function(xhr,ajaxOptions,thrownError){
-				var error = xhr.responseJSON;
-                var no = 0;
-                var errorArray = [];
-                $.each(error, function (key, value) {
-                    errorArray[no] = value[0];
-                    no++;
-                });
-                $.toast({
-                    heading: 'Error!',
-                    text: errorArray,
-                    icon: 'error',
-                    position: 'bottom-right'
-                });
-			}
-        });
-        
-    });
-    $('#closeModalDisposisi').click(function(){
-        $('#disposisi-modal').modal('hide');
-        $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
-    });
-});
-
-//Simpan Surat
-$(document).on('click','#simpanSurat',function(){
-    if($('.tanggalTerima').length>0){
-        var formInput = $('#formInput').serialize();
-        $.ajax({
-            url:"{{ url('sec/inbox') }}",
-            data:formInput,
-            type:'post',
-            dataType:'json',
-            cache:false,
             success:function(response){
                 $.toast({
                     heading: 'Information',
@@ -1238,9 +1275,7 @@ $(document).on('click','#simpanSurat',function(){
                     showHideTransition: 'slide',
                     icon: response.status
                 });
-                $('#divForm').empty();
-                $('#tableInbox').DataTable().ajax.reload(null,false);
-                $('#tableInboxDisposisi').DataTable().ajax.reload(null,false);
+                $('#bodyDisposisiModal').pleaseWait('stop');
             },
 			error:function(xhr,ajaxOptions,thrownError){
 				var error = xhr.responseJSON;
@@ -1256,59 +1291,30 @@ $(document).on('click','#simpanSurat',function(){
                     icon: 'error',
                     position: 'bottom-right'
                 });
+                $('#bodyDisposisiModal').pleaseWait('stop');
 			}
         });
-    }
+        
+    });
+    $('#tabsSurat').click(function(){
+        $('#headInbox').show();
+        $('#headDisposisi').hide();
+    });
+    $('#tabsDisposisi').click(function(){
+        $('#headDisposisi').show();
+        $('#headInbox').hide();
+    });
 });
-
-//Hapus Rows
-$(document).on('click','.hapusRows',function(){
-    $(this).parent().parent().remove();
-});
-$('body').on('focus',".tanggalTerima",function(){
-     $(this).datepicker({
-        format: "dd-mm-yyyy",
-        language: "id",
-        autoclose: true
-    }); 
-});
-$('body').on('change',".tanggalTerima",function(){
-    $('.datepicker').hide();
-});
-
-$('body').on('focus',".tanggalSurat",function(){
-    console.log('test');
-     $(this).datepicker({
-        format: "dd-mm-yyyy",
-        language: "id",
-        autoclose: true
-    }); 
-});
-$('body').on('change',".tanggalSurat",function(){
-    $('.datepicker').hide();
-});
-
-function appendForm(){
-    var input = '<tr>'+
-                    '<th scope="row"><button class="btn btn-icon waves-effect waves-light btn-youtube m-b-5 hapusRows" tabindex="-1"><i class="fa fa-remove"></i></button></th>' +
-                    '<td class="col-md-2"><div class="form-group"><div class="tanggalTerima"><input type="text" class="form-control" name="tanggalTerima[]" required></div></div></td>'+
-                    '<td class="col-md-2"><div class="form-group"><div class="tanggalSurat"><input type="text" class="form-control" name="tanggalSurat[]" required></div></div></td>'+
-                    '<td class="col-md-2"><div class="form-group"><div><input type="text" class="form-control" name="nomorSurat[]" required></div></div></td>'+
-                    '<td class="col-md-3"><div class="form-group"><div><input type="text" class="form-control" name="asalSurat[]" required></div></div></td>'+
-                    '<td class="col-md-3"><div class="form-group"><div><input type="text" class="form-control" name="perihal[]" required></div></div></td>'+
-                '</tr>';
-    $('#bodyInput').append(input);
-}
-
-function loadDataInbox(){
-    var table = $('#tableInbox').DataTable({
+function loadInbox(){
+    var table = $('#tblInbox').DataTable({
         processing:true,
         serverSide:true,
         destroy:true,
-        ajax:"{{ url('sec/dataSurat') }}",
+        fixedHeader:true,
+        ajax:"{{ url('sec/dataInbox') }}",
         columns:[
             {data:'id_surat',render:function(data,type,row){
-                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:20px;height:20px;"></center>';
+                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:18px;height:18px;"></center>';
             }},
             {data:'id_surat'},
             {data:'tanggal_terima'},
@@ -1317,23 +1323,31 @@ function loadDataInbox(){
             {data:'asal_surat'},
             {data:'perihal'},
             {data:'id_surat',render:function(data,type,row){
-                return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailInbox" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>'+
-                        '<a class="btn btn-sm btn-icon waves-effect waves-light btn-warning m-b-5 updateInbox" data-id="'+ data +'"><i class="mdi mdi-refresh"></i></a>'+
-                        '<a class="btn btn-sm btn-icon waves-effect waves-light btn-youtube m-b-5 deleteInbox" data-id="'+ data +'"><i class="fa fa-remove"></i></a>';
-            }},
+                return '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi" data-id="'+ data +'"><i class="mdi mdi-magnify"></i></a>'+
+                        '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-youtube m-b-5 deleteInbox" data-title="Hapus Surat Masuk?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left" data-id="'+ data +'"><i class="fa fa-remove"></i></a>';
+            }}
+        ],
+            columnDefs:[
+            { "width": "5%", "targets": 0 },
+            { "width": "5%", "targets": 1 },
+            { "width": "5%", "targets": 7},
+            {className:"noWrapTd",targets:[2]},
+            {className:"noWrapTd",targets:[3]},
+            {className:"noWrapTd",targets:[4]},
+            {className:"noWrapTd",targets:[-1]}
         ]
     });
 }
-
-function loadDataDisposisi(){
-    var table = $('#tableInboxDisposisi').DataTable({
+function loadDisposisi(){
+    var table = $('#tblDisposisi').DataTable({
         processing:true,
         serverSide:true,
         destroy:true,
+        fixedHeader:true,
         ajax:"{{ url('sec/dataDisposisi') }}",
         columns:[
             {data:'id_surat',render:function(data,type,row){
-                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:20px;height:20px;"></center>';
+                return '<center><input type="checkbox" name="id_surat_print[]" value="'+data+'" style="width:18px;height:18px;"></center>';
             }},
             {data:'id_surat'},
             {data:'nomor_surat'},
@@ -1512,85 +1526,49 @@ function loadDataDisposisi(){
             
             }},
             {data: function(data,type,dataToSet){
-                return '<a class="btn btn-sm btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi btn-block" data-id="' + data.id_surat + '"><i class="mdi mdi-magnify"></i></a>';
+                return '<a style="z-index:0;" class="btn btn-xs btn-icon waves-effect waves-light btn-primary m-b-5 detailDisposisi" data-id="' + data.id_surat + '"><i class="mdi mdi-magnify"></i></a>';
             }},
+        ],
+            columnDefs:[
+            { "width": "5%", "targets": 0 },
+            { "width": "5%", "targets": 1 },
+            { "width": "5%", "targets": 5 },
+            { "width": "5%", "targets": 6 },
+            { "width": "5%", "targets": 7 },
+            { "width": "5%", "targets": 8 },
+            { "width": "5%", "targets": 9 },
+            { "width": "5%", "targets": 10 },
+            { "width": "5%", "targets": 12 },
+            {className:"noWrapTd",targets:[2]}
         ]
     });
 }
-function postDataDisposisi(){
-    
-}
-$(document).on('click','.detailInbox',function(){
-    var id = $(this).attr('data-id');
-    $.post("{{ url('/sec/detailInbox') }}", {
-        "_token": "{{ csrf_token() }}",
-        "id": id
-    },
-    function (notice) {
-        console.log(notice);
-        $.each(notice,function(i,item){
-            $('#nomorAgendaDetail').val(item.id_surat);
-            $('#tanggalTerimaDetail').val(item.tanggal_terima);
-            $('#tanggalSuratDetail').val(item.tanggal_surat);
-            $('#nomorSuratDetail').val(item.nomor_surat);
-            $('#asalSuratDetail').val(item.asal_surat);
-            $('#perihalDetail').val(item.perihal);
-            item.sangat_rahasia==1      ? $('#sifatSR').prop('checked',true)        : $('#sifatSR').prop('checked', false);
-            item.rahasia==1             ? $('#sifatR').prop('checked', true)        : $('#sifatR').prop('checked', false);
-            item.sangat_segera==1       ? $('#sifatSS').prop('checked', true)       : $('#sifatSS').prop('checked', false);
-            item.segera==1              ? $('#sifatS').prop('checked', true)        : $('#sifatS').prop('checked', false);
-            item.biasa==1               ? $('#sifatB').prop('checked', true)        : $('#sifatB').prop('checked', false);
-            if(item.sifat_lainnya!==null){
-                $('#sifatLainnya').prop('checked', true);
-                $('#labelSifatLainnya').empty();
-                $('#labelSifatLainnya').append(item.sifat_lainnya);
-            }else{
-                $('#sifatLainnya').prop('checked', false);
-                $('#labelSifatLainnya').empty();
-                $('#labelSifatLainnya').append(".........");
-            }
-
-            item.kasi_adm_bimbingan==1          ? $('#disposisiBD401').prop('checked', true) : $('#disposisiBD401').prop('checked', false);
-            item.kasi_bim_penagihan==1          ? $('#disposisiBD402').prop('checked', true) : $('#disposisiBD402').prop('checked', false);
-            item.kasi_intelijen==1              ? $('#disposisiBD403').prop('checked', true) : $('#disposisiBD403').prop('checked', false);
-            item.kasi_adm_bukti==1              ? $('#disposisiBD404').prop('checked', true) : $('#disposisiBD404').prop('checked', false);
-            item.kasi_ketua_kelompok_satu==1    ? $('#disposisiBD701').prop('checked', true) : $('#disposisiBD701').prop('checked', false);
-            item.kasi_ketua_kelompok_dua==1     ? $('#disposisiBD702').prop('checked', true) : $('#disposisiBD702').prop('checked', false);
-            if(item.disposisi_lainnya!==null){
-                $('#disposisiLainnya').prop('checked', true);
-                $('#labelDisposisiLainnya').empty();
-                $('#labelDisposisiLainnya').append(item.disposisi_lainnya);
-            }else{
-                $('#disposisiLainnya').prop('checked', false);
-                $('#labelDisposisiLainnya').empty();
-                $('#labelDisposisiLainnya').append(".........");
-            }
-            
-            item.diproses==1            ? $('#petunjukProses').prop('checked', true)            : $('#petunjukProses').prop('checked', false);
-            item.ditindaklanjuti==1     ? $('#petunjukTindaklanjuti').prop('checked', true)     : $('#petunjukTindaklanjuti').prop('checked', false);
-            item.dimanfaatkan==1        ? $('#petunjukManfaatkan').prop('checked', true)        : $('#petunjukManfaatkan').prop('checked', false);
-            item.diadministrasikan==1   ? $('#petunjukAdministrasikan').prop('checked', true)   : $('#petunjukAdministrasikan').prop('checked', false);
-            item.dipantau==1            ? $('#petunjukPantau').prop('checked', true)            : $('#petunjukPantau').prop('checked', false);
-            item.diedarkan==1           ? $('#petunjukEdarkan').prop('checked', true)           : $('#petunjukEdarkan').prop('checked', false);
-            item.dipelajari==1          ? $('#petunjukPelajari').prop('checked', true)          : $('#petunjukPelajari').prop('checked', false);
-            item.dicatat==1             ? $('#petunjukCatat').prop('checked', true)             : $('#petunjukCatat').prop('checked', false);
-            item.arsip==1               ? $('#petunjukArsip').prop('checked', true)             : $('#petunjukArsip').prop('checked', false);
-            if(item.petunjuk_lainnya!==null){
-                $('#petunjukLainnya').prop('checked', true);
-                $('#labelPetunjukLainnya').empty();
-                $('#labelPetunjukLainnya').append(item.petunjuk_lainnya);
-            }else{
-                $('#petunjukLainnya').prop('checked', false);
-                $('#labelPetunjukLainnya').empty();
-                $('#labelPetunjukLainnya').append(".........");
-            }
+$(document).on('click','.deleteInbox',function(){
+    $(this).confirmation('show');
+    $(this).on('confirmed.bs.confirmation',function(){
+        var id = $(this).attr('data-id');
+        $.post("{{ url('/sec/deleteInbox') }}",{
+            "_token":"{{ csrf_token() }}",
+            "id":id
+        },
+        function(response){
+            $.toast({
+                heading: 'Information',
+                text: response.message,
+                position: 'bottom-right',
+                stack: false,
+                showHideTransition: 'slide',
+                icon: response.status
+            });
+        },"json").done(function(){
+            $('#tblInbox').DataTable().ajax.reload(null,false);
+            $('#tblDisposisi').DataTable().ajax.reload(null,false);
         });
-    }, "json").done(function () {
-        $('#detail-modal').modal('show');
     });
 });
 $(document).on('click','.detailDisposisi',function(){
     var id = $(this).attr('data-id');
+    $('body').pleaseWait();
     $.post("{{ url('/sec/detailDisposisi') }}",{
         "_token":"{{ csrf_token() }}",
         "id":id
@@ -1629,42 +1607,15 @@ $(document).on('click','.detailDisposisi',function(){
             item.petunjuk_lainnya!==null   ? $('#labelPetunjukLainnyaDps').val(item.petunjuk_lainnya) : $('#labelPetunjukLainnyaDps').val('');
         });
     },"json").done(function(){
+        $('body').pleaseWait('stop');
         $('#disposisi-modal').modal('show');
     });
-    //TODO DETAIL DISPOSISI MODAL, MOVE KANAN  KIRI AKSES SURAT
 });
-$(document).on('click','.updateInbox',function(){
-    var id = $(this).attr('data-id');
-    console.log(id);
-});
-
-$(document).on('click','.deleteInbox',function(){
-    var id = $(this).attr('data-id');
-    $.post("{{ url('/sec/deleteInbox') }}",{
-        "_token":"{{ csrf_token() }}",
-        "id":id
-    },
-    function (response){
-        $.toast({
-            heading: 'Information',
-            text: response.message,
-            position: 'bottom-right',
-            stack: false,
-            showHideTransition: 'slide',
-            icon: response.status
-        });
-    },"json").done(function(){
-        $('#tableInbox').DataTable().ajax.reload(null,false);
+</script>
+<script>
+    jQuery('.dAC').datepicker({
+        autoclose: true,
+        todayHighlight: true
     });
-});
-
-$(document).keyup(function(e){
-    if(e.keyCode==192){
-        if($('#divForm').length){
-            appendForm()
-        }
-    }
-});
-
 </script>
 @endsection

@@ -33,27 +33,31 @@ td.noWrapTd{
 <ul>
     <li class="menu-title">Navigation</li>
     <li>
-        <a href="{!! url('kasi/dashboard') !!}" class="waves-effect"><i class="mdi mdi-home"></i><span> Dashboard </span></a>
+        <a href="{!! url('adm/dashboard') !!}" class="waves-effect"><i class="mdi mdi-home"></i><span> Dashboard </span></a>
     </li>
     <li>
-        <a href="{!! url('kasi/acc') !!}" class="waves-effect"><i class="mdi mdi-account-key"></i><span> Account Panel </span></a>
+        <a href="{!! url('adm/control') !!}" class="waves-effect"><i class="mdi mdi-account-key"></i><span> Admin Panel </span></a>
+    </li>
+    <li>
+        <a href="{!! url('adm/user') !!}" class="waves-effect"><i class="mdi mdi-account-location"></i><span> User Panel </span></a>
     </li>
     <li class="menu-title">Data</li>
     <li>
-        <a href="{!! url('kasi/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
+        <a href="{!! url('adm/inbox') !!}" class="waves-effect"><i class="mdi mdi-email-open"></i><span> Surat Masuk </span></a>
     </li>
     <li>
-        <a href="{!! url('kasi/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
+        <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
     <li>
-        <a href="{!! url('kasi/chart') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Grafik Data Surat </span></a>
+        <a href="{!! url('adm/chart') !!}" class="waves-effect"><i class="fa fa-line-chart"></i><span> Grafik Data Surat </span></a>
     </li>
     <li class="menu-title">Account</li>
     <li>
-        <a href="{!! url('kasi/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
+        <a href="{!! url('adm/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
     </li>
 </ul>    
 @endsection
+
 @section('content')
 <div class="row">
     <div class="col-xs-12">
@@ -61,7 +65,7 @@ td.noWrapTd{
             <h4 class="page-title">Kelola Surat Masuk</h4>
             <ol class="breadcrumb p-0 m-0">
                 <li>
-                    <a href="{{ url('kasi/dashboard') }}">Home</a>
+                    <a href="{{ url('adm/dashboard') }}">Home</a>
                 </li>
                 <li class="active">
                     Grafik Disposisi Surat Masuk Bidang
@@ -75,12 +79,12 @@ td.noWrapTd{
     <div class="col-lg-12">
         <div class="card-box">
             <h4 class="header-title m-t-0 m-b-30">Export Excel</h4>
-            {!! Form::open(array("url"=>'kasi/export')) !!}
+            {!! Form::open(array("url"=>'adm/export')) !!}
             {!! Form::hidden('type','1') !!}
             <button id="exportInbox" class="btn btn-primary waves-effect w-md waves-light m-b-5"><span class="mdi mdi-email-open"></span>&nbsp;&nbsp;Export Surat Masuk</button>
             {!! Form::close() !!}
 
-            {!! Form::open(array("url"=>'kasi/export')) !!}
+            {!! Form::open(array("url"=>'adm/export')) !!}
             {!! Form::hidden('type','2') !!}
             <button id="exportInbox" class="btn btn-success waves-effect w-md waves-light m-b-5"><span class="mdi mdi-email"></span>&nbsp;&nbsp;Export Surat Keluar</button>
             {!! Form::close() !!}
@@ -192,11 +196,56 @@ td.noWrapTd{
 <script>
 $(document).ready(function(){
     $('#btnGrfInbox').click(function(){
-
+        var data = $('#frmInbox').serialize();
+        $('#btnRstInbox').show();
+        $('#btnGrfInbox').hide();
+        $.ajax({
+            url:"{{ url('/data/graph') }}",
+            data:data,
+            type:'post',
+            dataType:'json',
+            cache:false,
+            beforeSend:function(){},
+            success:function(){},
+            error:function(xhr,ajaxOptions,thrownError){}
+        });
     });
-    $('#btnGrfOutbox').click(function(){});
-    $('#btnRstInbox').click(function(){});
-    $('#btnRstOutbox').click(function(){});
+    $('#btnGrfOutbox').click(function(){
+        var data = $('#frmOutbox').serialize();
+        $('#btnRstOutbox').show();
+        $('#btnGrfOutbox').hide();
+        $.ajax({
+            url:"{{ url('/data/graph') }}",
+            data:data,
+            type:'post',
+            dataType:'json',
+            cache:false,
+            beforeSend:function(){},
+            success:function(){},
+            error:function(xhr,ajaxOptions,thrownError){}
+        });
+    });
+    $('#btnRstInbox').click(function(){
+        $('#btnGrfInbox').show();
+        $('#btnRstInbox').hide();
+        defaultGraph()
+    });
+    $('#btnRstOutbox').click(function(){
+        $('#btnGrfOutbox').show();
+        $('#btnRstOutbox').hide();
+        defaultGraph()
+    });
+    function defaultGraph(){
+        $.ajax({
+            url:"{{ url('/data/graphDefault') }}",
+            type:'post',
+            dataType:'json',
+            cache:false,
+            beforeSend:function(){},
+            success:function(){},
+            error:function(xhr,ajaxOptions,thrownError){}
+        });
+    }
 });
 </script>
 <script>

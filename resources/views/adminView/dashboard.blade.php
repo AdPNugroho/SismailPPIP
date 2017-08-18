@@ -30,6 +30,9 @@
     <li>
         <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
     </li>
+    <li>
+        <a href="{!! url('adm/chart') !!}" class="waves-effect"><i class="fa fa-line-chart"></i><span> Grafik Data Surat </span></a>
+    </li>
     <li class="menu-title">Account</li>
     <li>
         <a href="{!! url('adm/logout') !!}" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
@@ -55,7 +58,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-3">
         <div class="card-box widget-box-two widget-two-default">
             <i class="mdi mdi-account-key widget-two-icon"></i>
             <div class="wigdet-two-content">
@@ -65,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-3">
         <div class="card-box widget-box-two widget-two-default">
             <i class="mdi mdi-account-star-variant widget-two-icon"></i>
             <div class="wigdet-two-content">
@@ -75,12 +78,22 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-3">
         <div class="card-box widget-box-two widget-two-default">
             <i class="mdi mdi-email widget-two-icon"></i>
             <div class="wigdet-two-content">
                 <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Total Surat Masuk</p>
-                <h2><span data-plugin="counterup">{{ $surat }}</span> <small></small></h2>
+                <h2><span data-plugin="counterup">{{ $surat_masuk }}</span> <small></small></h2>
+                <p class="text-muted m-0"><b>&nbsp;</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card-box widget-box-two widget-two-default">
+            <i class="mdi mdi-email widget-two-icon"></i>
+            <div class="wigdet-two-content">
+                <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Total Surat Keluar</p>
+                <h2><span data-plugin="counterup">{{ $surat_keluar }}</span> <small></small></h2>
                 <p class="text-muted m-0"><b>&nbsp;</b></p>
             </div>
         </div>
@@ -108,7 +121,10 @@
                         <ul>
                             <li>Mengelola Akun Admin</li>
                             <li>Mengelola Akun User Sekre dan Kasi</li>
-                            <li>Mengelola Surat Masuk Jika Diperlukan</li>
+                            <li>Mengelola Surat Masuk </li>
+                            <li>Mengelola Surat Keluar</li>
+                            <li>Melihat Grafik Surat Perbidang</li>
+                            <li>Export Data Ke Excel</li>
                         </ul>
                     </p>
                 </div>

@@ -2,13 +2,8 @@
 @section('css')
 <!-- DataTables -->
 <link href="{{ url('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/dataTables.colVis.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/fixedColumns.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
 
 <!-- App css -->
 <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,6 +16,13 @@
 <link rel="stylesheet" href="{{ url('assets/plugins/switchery/switchery.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('/assets/css/jquery.toast.css') }}"> 
+<style>
+td.noWrapTd{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+</style>
 @endsection 
 
 @section('nav')
@@ -41,6 +43,9 @@
     </li>
     <li>
         <a href="{!! url('adm/outbox') !!}" class="waves-effect"><i class="mdi mdi-email"></i><span> Surat Keluar </span></a>
+    </li>
+    <li>
+        <a href="{!! url('adm/chart') !!}" class="waves-effect"><i class="fa fa-line-chart"></i><span> Grafik Data Surat </span></a>
     </li>
     <li class="menu-title">Account</li>
     <li>
@@ -90,25 +95,25 @@
                         <div class="col-md-6">
                             {!! Form::open(array('class'=>'form-horizontal','id'=>'formUser')) !!}
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                                <label class="col-sm-3 control-label">Username</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="username" class="form-control" placeholder="Username">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                                <label class="col-sm-3 control-label">Password</label>
                                 <div class="col-sm-9">
                                     <input type="password" name="password" class="form-control" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword4" class="col-sm-3 control-label">Password Confirmation</label>
+                                <label class="col-sm-3 control-label">Password Confirmation</label>
                                 <div class="col-sm-9">
                                     <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword4" class="col-sm-3 control-label">Status</label>
+                                <label class="col-sm-3 control-label">Status</label>
                                 <div class="col-sm-9">
                                     <select name="status" class="form-control">
                                         <option value='2'>Sekretaris</option>
@@ -129,7 +134,7 @@
                     <table id="tableUser" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>ID Pengguna</th>
+                                <th>ID</th>
                                 <th>Username</th>
                                 <th>Last Login</th>
                                 <th>Status</th>
@@ -171,13 +176,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="field-3" class="control-label">Password</label>
-                            <input type="password" class="form-control" id="field-3" placeholder="Password" name="password_update">
+                            <input type="password" class="form-control" placeholder="Password" name="password_update">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="field-3" class="control-label">Password Confirmation</label>
-                            <input type="password" class="form-control" id="field-3" placeholder="Password Confirmation" name="password_update_confirmation">
+                            <input type="password" class="form-control" placeholder="Password Confirmation" name="password_update_confirmation">
                         </div>
                     </div>
                 </div>
@@ -220,23 +225,8 @@
 <script src="{{ url('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
 
 <script src="{{ url('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/jszip.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/vfs_fonts.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.print.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.colVis.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/dataTables.fixedColumns.min.js') }}"></script>
-
-<!-- init -->
-<script src="{{ url('assets/pages/jquery.datatables.init.js') }}"></script>
-
 <!-- App js -->
 <script src="{{ url('assets/js/jquery.core.js') }}"></script>
 <script src="{{ url('assets/js/jquery.app.js') }}"></script>
@@ -259,7 +249,6 @@
                 $('#divContent').pleaseWait();
             },
             success:function(response){
-                loadDt()
                 $.toast({
                     heading: 'Information',
                     text: response.message,
@@ -269,7 +258,7 @@
                     icon: response.status
                 });
                 $('#formUser').trigger("reset");
-                
+                $('#tableUser').DataTable().ajax.reload(null,false);
             },
             error:function(xhr,ajaxOptions,thrownError){
                 var error = xhr.responseJSON;
@@ -319,6 +308,7 @@
     });
     $(document).on('click','.updateUser',function(){
         var id = $(this).attr('data-id');
+        $('#formUpdateUser').trigger('reset');
         $('#divContent').pleaseWait();
         $.post("{{ url('adm/getUser') }}",{
             "_token":"{{ csrf_token() }}",
@@ -391,15 +381,24 @@
                 {data: 'last_login'},
                 {data: 'status',render:function(data,type,row){
                     if(data=='2'){
-                        return '<a class="btn-sm btn-warning">Sekretaris</a>';
+                        return '<a class="btn-sm btn-primary">Sekretaris</a>';
                     }else{
                         return '<a class="btn-sm btn-success">Kasi</a>';
                     }
                 }},
                 {data: 'id_pengguna',render:function(data,type,row){
-                    return '<a class="updateUser btn-sm btn-success" data-id='+data+'>Update</a>'+
-                            '<a class="deleteUser btn-sm btn-danger" data-title="Hapus User ?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"  data-id='+data+'>Delete</a>';
+                    return '<button class="updateUser btn-sm btn-success" data-id='+data+'>Update</button>'+
+                            '<button class="deleteUser btn-sm btn-danger" data-title="Hapus User ?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"  data-id='+data+'>Delete</button>';
                 }}
+            ],
+            columnDefs:[
+                { "width": "5%", "targets": 0 },
+                { "width": "5%", "targets": 1 },
+                { "width": "5%", "targets": 3 },
+                { "width": "5%", "targets": 4},
+                {className:"noWrapTd",targets:[1]},
+                {className:"noWrapTd",targets:[3]},
+                {className:"noWrapTd",targets:[4]}
             ]
         });
     }
