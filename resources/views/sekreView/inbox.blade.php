@@ -108,7 +108,7 @@ td.noWrapTd{
 	                                <label class="col-md-2 control-label">Tanggal Terima</label>
 	                                <div class="col-md-10">
                                         <div class="input-group">
-                                            <input type="text" class="form-control dAC" placeholder="mm/dd/yyyy" name="tanggal_terima">
+                                            <input type="text" class="form-control dAC" placeholder="yyyy-mm-dd" name="tanggal_terima">
                                             <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
                                         </div>
 	                                </div>
@@ -117,7 +117,7 @@ td.noWrapTd{
 	                                <label class="col-md-2 control-label">Tanggal Surat</label>
 	                                <div class="col-md-10">
                                         <div class="input-group">
-                                            <input type="text" class="form-control dAC" placeholder="mm/dd/yyyy" name="tanggal_surat">
+                                            <input type="text" class="form-control dAC" placeholder="yyyy-mm-dd" name="tanggal_surat">
                                             <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
                                         </div>
 	                                </div>
@@ -518,13 +518,13 @@ td.noWrapTd{
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="example-email">Tanggal Terima</label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" id="tanggalTerimaDps">
+                                            <input type="text" class="form-control dAC" id="tanggalTerimaDps">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Tanggal Surat</label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" id="tanggalSuratDps">
+                                            <input type="text" class="form-control dAC" id="tanggalSuratDps">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -775,26 +775,6 @@ td.noWrapTd{
                             <button type="button" class="btn btn-googleplus waves-effect btn-sm" id="closeModalDisposisi">Close</button>
                             <button type="button" class="btn btn-success waves-effect btn-sm" id="saveDisposisi">Save</button>
                             <button type="button" class="btn btn-default btn-icon btn-sm waves-effect" id="nextDisposisi">Next<i class="mdi mdi-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="update-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content p-0 b-0">
-                    <div class="panel panel-color panel-primary">
-                        <div class="panel-heading">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3 class="panel-title">Detail Lembar Surat Masuk</h3>
-                        </div>
-                        <div class="panel-body">
-                            
-                            
-                        </div>
-                        <div class="panel-footer">
-                            <button type="button" class="btn btn-googleplus waves-effect" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary waves-effect" >Save</button>
                         </div>
                     </div>
                 </div>
@@ -1615,7 +1595,8 @@ $(document).on('click','.detailDisposisi',function(){
 <script>
     jQuery('.dAC').datepicker({
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
+        format: "yyyy-mm-dd"
     });
 </script>
 @endsection

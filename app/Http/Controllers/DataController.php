@@ -201,7 +201,6 @@ class DataController extends Controller
             exit("Not an Ajax Request!");
         }
     }
-    
     public function dataBaPen(Request $request){
         if($request->ajax()){
             $data = DB::table('tbl_outbox_first')
@@ -251,8 +250,7 @@ class DataController extends Controller
         }else{
             exit("Not an Ajax Request!");
         }
-    }
-    
+    } 
     public function dataLkDik(Request $request){
         if($request->ajax()){
             $data = DB::table('tbl_outbox_first')
@@ -373,7 +371,6 @@ class DataController extends Controller
             exit("Not an Ajax Request!");
         }
     }
-    
     public function dataFax(Request $request){
         if($request->ajax()){
             $data = DB::table('tbl_outbox_fax')->get();
@@ -382,7 +379,6 @@ class DataController extends Controller
             exit("Not an Ajax Request!");
         }
     }
-
     public function dataLII(Request $request){
         if($request->ajax()){
             $data = DB::table('tbl_outbox_second')
@@ -443,7 +439,6 @@ class DataController extends Controller
             exit("Not an Ajax Request!");
         }
     }
-
     public function dataOutboxPost(Request $request){
         if($request->ajax()){
             $data = $request->all();
@@ -453,14 +448,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required','max:255'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -476,7 +469,13 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'BA.TA-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'BA.TA-'.$c.'/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'BA.TA-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -490,7 +489,13 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'BA.TA-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'BA.TA-01/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'BA.TA-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -583,14 +588,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -606,7 +609,13 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'S-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'S-'.$c.'/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'S-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -620,7 +629,13 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'S-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'S-01/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'S-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -644,14 +659,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -667,7 +680,13 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'KET-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'KET-'.$c.'/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'KET-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -681,7 +700,13 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'KET-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'KET-01/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'KET-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -705,14 +730,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -728,7 +751,13 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'ND-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'ND-'.$c.'/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'ND-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -742,7 +771,13 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'ND-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'ND-01/WPJ.14/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'ND-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -766,14 +801,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -789,7 +822,13 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'SPR-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SPR-'.$c.'/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'SPR-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -803,7 +842,13 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'SPR-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SPR-01/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'SPR-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -827,14 +872,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -850,7 +893,13 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'NDR-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'NDR-'.$c.'/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'NDR-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -864,7 +913,13 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'NDR-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'NDR-01/WPJ.14/'.$tanggalInsert;
+                            $kode_seksi = $data['kode_seksi'];
+                        }else{
+                            $nomor_surat = 'NDR-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                            $kode_seksi = strtoupper($data['kode_seksi']);
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -888,14 +943,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -911,7 +964,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'SP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -925,7 +982,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'SP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -949,14 +1010,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -972,7 +1031,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'SR-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SR-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SR-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -986,7 +1049,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'SR-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SR-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SR-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1010,14 +1077,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1033,7 +1098,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'S-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/RIK.SIS/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'S-'.$c.'/WPJ.14/RIK.SIS/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'S-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/RIK.SIS/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1047,7 +1116,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'S-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/RIK.SIS/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'S-01/WPJ.14/RIK.SIS/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'S-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/RIK.SIS/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1071,14 +1144,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1094,7 +1165,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'SI-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SI-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SI-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1108,7 +1183,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'SI-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SI-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SI-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1130,6 +1209,11 @@ class DataController extends Controller
                     break;
                 case '12':
                     //WPJ.14 Belum Jelas
+                    $response = array(
+                        'message'=>'Fungsi Input Surat WPJ.14 Belum Berjalan',
+                        'status'=>'error'
+                    );
+                    return response()->json($response);
                     break;
                 case '13':
                     $message = array(
@@ -1201,14 +1285,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1224,7 +1306,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'ST-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'ST-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'ST-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1238,7 +1324,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'ST-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'ST-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'ST-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1319,14 +1409,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1342,7 +1430,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LHPPU-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LHPPU-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LHPPU-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1356,7 +1448,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LHPPU-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LHPPU-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LHPPU-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1380,14 +1476,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1403,7 +1497,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LAP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LAP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LAP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1417,7 +1515,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LAP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LAP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LAP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1441,14 +1543,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1464,7 +1564,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LAT-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1478,7 +1582,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LAT-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1502,14 +1610,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi.required'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1525,7 +1631,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'BA-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'BA-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'BA-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1539,7 +1649,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'BA-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'BA-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'BA-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1910,14 +2024,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1933,7 +2045,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'BA.PEN-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'BA.PEN-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'BA.PEN-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -1947,7 +2063,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'BA.PEN-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'BA.PEN-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'BA.PEN-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -1971,14 +2091,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -1994,7 +2112,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'PRIN.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PRIN.BP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PRIN.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2008,7 +2130,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'PRIN.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PRIN.BP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PRIN.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2032,14 +2158,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2055,7 +2179,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'SPPBP.P-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SPPBP.P-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SPPBP.P-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2069,7 +2197,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'SPPBP.P-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SPPBP.P-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SPPBP.P-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2093,14 +2225,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2116,7 +2246,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'SPEMB.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SPEMB.BP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SPEMB.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2130,7 +2264,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'SPEMB.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'SPEMB.BP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'SPEMB.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2154,14 +2292,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2177,7 +2313,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'PEMB.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PEMB.BP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PEMB.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2191,7 +2331,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'PEMB.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PEMB.BP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PEMB.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2284,14 +2428,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2307,7 +2449,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LK.DIK-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LK.DIK-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LK.DIK-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2321,7 +2467,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LK.DIK-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LK.DIK-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LK.DIK-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2345,14 +2495,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2368,7 +2516,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'PRIN.DIK-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PRIN.DIK-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PRIN.DIK-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2382,7 +2534,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'PRIN.DIK-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PRIN.DIK-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PRIN.DIK-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2406,14 +2562,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2429,7 +2583,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LHPS-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LHPS-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LHPS-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2443,7 +2601,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LHPS-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LHPS-01/WPJ.14/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LHPS-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2467,14 +2629,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2490,7 +2650,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'PANG.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PANG.BP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PANG.BP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2504,7 +2668,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'PANG.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PANG.BP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PANG.BP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2528,14 +2696,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2551,7 +2717,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LPBP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LPBP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LPBP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2565,7 +2735,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LPBP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LPBP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LPBP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2589,14 +2763,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2612,7 +2784,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'DUPAK-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'DUPAK-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'DUPAK-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2626,7 +2802,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'DUPAK-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'DUPAK-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'DUPAK-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2717,14 +2897,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2740,7 +2918,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'PRIN.MAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PRIN.MAT-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PRIN.MAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2754,7 +2936,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'PRIN.MAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'PRIN.MAT-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'PRIN.MAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2778,14 +2964,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2801,7 +2985,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'INS.MAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'INS.MAT-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'INS.MAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2815,7 +3003,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'INS.MAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'INS.MAT-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'INS.MAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2839,14 +3031,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2862,7 +3052,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LAP.MAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LAP.MAT-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LAP.MAT-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2876,7 +3070,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LAP.MAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LAP.MAT-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LAP.MAT-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2900,14 +3098,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2923,7 +3119,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LHIP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LHIP-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LHIP-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2937,7 +3137,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LHIP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LHIP-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LHIP-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -2961,14 +3165,12 @@ class DataController extends Controller
                     $message = array(
                         'tanggal_surat.required'=>'Tanggal Surat Harus Di Isi',
                         'tujuan.required'=>'Tujuan Harus Di Isi',
-                        'perihal.required'=>'Perihal Harus Di Isi',
-                        'kode_seksi'=>'Kode Seksi Harus Di Isi'
+                        'perihal.required'=>'Perihal Harus Di Isi'
                     );
                     Validator::make($data,[
                         'tanggal_surat'=>['required'],
                         'tujuan'=>['required'],
-                        'perihal'=>['required'],
-                        'kode_seksi'=>['required']
+                        'perihal'=>['required']
                     ],$message)->validate();
                     $explodeTanggal = explode('/',$data['tanggal_surat']);
                     $tanggalInsert = $explodeTanggal[2];
@@ -2984,7 +3186,11 @@ class DataController extends Controller
                         if(strlen($c)<2){
                             $c = sprintf('%02d',$c);
                         }
-                        $nomor_surat = 'LA-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LA-'.$c.'/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LA-'.$c.'/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>(int)$b[1] + 1,
                             'nomor_surat'=>$nomor_surat,
@@ -2998,7 +3204,11 @@ class DataController extends Controller
                         );
                         OutboxFirstModel::create($arrayInsert);
                     }else{
-                        $nomor_surat = 'LA-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        if($data['kode_seksi']===null){
+                            $nomor_surat = 'LA-01/WPJ.14/'.$tanggalInsert;
+                        }else{
+                            $nomor_surat = 'LA-01/WPJ.14/'.strtoupper($data['kode_seksi']).'/'.$tanggalInsert;
+                        }
                         $arrayInsert = array(
                             'nomor_urut'=>'1',
                             'nomor_surat'=> $nomor_surat,
@@ -3023,7 +3233,6 @@ class DataController extends Controller
             exit("Not an Ajax Request!");
         }
     }
-
     public function dataOutboxDelete(Request $request){
         $data = $request->all();
         $type = $data['type'];
@@ -3041,8 +3250,6 @@ class DataController extends Controller
         );
         return response()->json($response);
     }
-
-    
     public function exportXls(Request $request){
         $type = $request['type'];
         setlocale(LC_TIME, 'ind');

@@ -130,8 +130,8 @@ td.noWrapTd{
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnPilihSurat">Pilih Surat</button>
-                                <button type="button" class="btn btn-youtube waves-effect w-md waves-light m-b-5" id="btnResetPilihSurat" style="display:none;">Reset</button>
+                                <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnPilihSurat"><span class="fa fa-chevron-circle-left"></span>&nbsp;&nbsp;Pilih Surat</button>
+                                <button type="button" class="btn btn-youtube waves-effect w-md waves-light m-b-5" id="btnResetPilihSurat" style="display:none;"><span class="fa fa-chevron-circle-down"></span>&nbsp;&nbsp;Reset</button>
                             </div>
                         </div>
                     </form>
@@ -340,6 +340,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -377,6 +381,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -414,6 +422,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -451,6 +463,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -488,6 +504,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -526,6 +546,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -562,6 +586,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -598,6 +626,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -634,6 +666,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -670,6 +706,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -706,6 +746,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -751,6 +795,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -787,6 +835,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -863,6 +915,9 @@ $(document).ready(function(){
                         {data:'nip_kasi'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "5%", "targets": 2 },
+                        { "width": "5%", "targets": 3 },
                         {className:"noWrapTd",targets:[0]},
                         {className:"noWrapTd",targets:[3]},
                         {className:"noWrapTd",targets:[8]},
@@ -900,6 +955,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -936,6 +995,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1008,6 +1071,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1044,6 +1111,11 @@ $(document).ready(function(){
                         {data:'analis'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "15%", "targets": 4 },
+                        { "width": "5%", "targets": 5},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1080,6 +1152,11 @@ $(document).ready(function(){
                         {data:'tindak_lanjut'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "5%", "targets": 1 },
+                        { "width": "5%", "targets": 2 },
+                        { "width": "5%", "targets": 4},
+                        { "width": "5%", "targets": 5},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1115,6 +1192,11 @@ $(document).ready(function(){
                         {data:'tindak_lanjut'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "5%", "targets": 1 },
+                        { "width": "5%", "targets": 2 },
+                        { "width": "5%", "targets": 4},
+                        { "width": "5%", "targets": 5},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1151,6 +1233,11 @@ $(document).ready(function(){
                         {data:'tindak_lanjut'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "5%", "targets": 1 },
+                        { "width": "5%", "targets": 2 },
+                        { "width": "5%", "targets": 4},
+                        { "width": "5%", "targets": 5},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1185,6 +1272,10 @@ $(document).ready(function(){
                         {data:'kesimpulan'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "5%", "targets": 1 },
+                        { "width": "5%", "targets": 2 },
+                        { "width": "5%", "targets": 4},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1221,6 +1312,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1257,6 +1352,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1293,6 +1392,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1329,6 +1432,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1365,6 +1472,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1400,6 +1511,11 @@ $(document).ready(function(){
                         {data:'analis'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 4},
+                        { "width": "5%", "targets": 5},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1436,6 +1552,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1472,6 +1592,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1508,6 +1632,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1544,6 +1672,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1580,6 +1712,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1616,6 +1752,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1650,6 +1790,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "5%", "targets": 1 },
+                        { "width": "5%", "targets": 2 },
+                        { "width": "5%", "targets": 5},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1686,6 +1830,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1722,6 +1870,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1758,6 +1910,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1794,6 +1950,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}
@@ -1830,6 +1990,10 @@ $(document).ready(function(){
                         {data:'kode_seksi_pembuat'}
                     ],
                     columnDefs:[
+                        { "width": "5%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 2 },
+                        { "width": "5%", "targets": 7},
                         {className:"noWrapTd",targets:[1]},
                         {className:"noWrapTd",targets:[2]},
                         {className:"noWrapTd",targets:[-1]}

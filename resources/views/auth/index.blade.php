@@ -90,12 +90,12 @@ $(document).ready(function() {
     
 {!! Form::open(array('url'=>'auth/login','class'=>'login-form','name'=>'login-form','id'=>'formLogin')) !!}    
     <div class="header">
-        <h1>SIPAMA</h1>
-        <span>Sistem Informasi Pengelolaan Surat Masuk.<br>&nbsp;</span>
+        <h1><center>SIPES</center></h1>
+        <span><h3>Sistem Informasi Pengelolaan Surat.<br>&nbsp;</h3></span>
     </div>
     <div class="content">
-	    <input name="username" type="text" class="input username" placeholder="Username" onfocus="this.value=''" required/>
-        <input name="password" type="password" class="input password" placeholder="Password" onfocus="this.value=''" required/>
+	    <input name="username" type="text" class="input username" placeholder="Username"  required/>
+        <input name="password" type="password" class="input password" placeholder="Password" required/>
     </div>
     <div class="footer">
         <button type="button" class="button" id="doLogin">Login</button>

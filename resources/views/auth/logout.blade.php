@@ -47,7 +47,7 @@
                                 <div class="text-center account-logo-box">
                                     <h2 class="text-uppercase">
                                         <a class="text-success">
-                                            <span alt="" height="36">SIPAMA</span>
+                                            <span alt="" height="36">SIPES</span>
                                         </a>
                                     </h2>
                                     <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->

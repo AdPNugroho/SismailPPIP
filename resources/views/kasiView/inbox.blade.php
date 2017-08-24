@@ -66,7 +66,7 @@ td.noWrapTd{
             <h4 class="page-title">Kelola Surat Masuk</h4>
             <ol class="breadcrumb p-0 m-0">
                 <li>
-                    <a href="{{ url('adm/dashboard') }}">Home</a>
+                    <a href="{{ url('kasi/dashboard') }}">Home</a>
                 </li>
                 <li class="active">
                     Surat Masuk
@@ -99,7 +99,7 @@ td.noWrapTd{
                     <div class="row" id="divSurat">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'kasi/print')) !!}
-                            <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="printSurat">Print</button>
+                            <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="printSurat"><span class="fa fa-print"></span>&nbsp;&nbsp;Print</button>
                             <table id="tblInbox" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -122,7 +122,7 @@ td.noWrapTd{
                     <div class="row" id="divDisposisi">
                         <div class="col-md-12">
                         {!! Form::open(array('url'=>'kasi/print')) !!}
-                            <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5">Print</button>
+                            <button type="submit" class="btn btn-primary waves-effect w-md waves-light m-b-5"><span class="fa fa-print"></span>&nbsp;&nbsp;Print</button>
                             <table id="tblDsp" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>

@@ -56,7 +56,7 @@
             <h4 class="page-title">User Control Panel</h4>
             <ol class="breadcrumb p-0 m-0">
                 <li>
-                    <a href="{{ url('adm/dashboard') }}">Home</a>
+                    <a href="{{ url('kasi/dashboard') }}">Home</a>
                 </li>
                 <li class="active">
                     User Control Panel
@@ -115,7 +115,7 @@
                             </div>
                             <div class="form-group m-b-0">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <a class="btn btn-info waves-effect waves-light" id='updAcc'>Update</a>
+                                    <a class="btn btn-primary waves-effect waves-light" id='updAcc'><span class="fa fa-refresh"></span>&nbsp;&nbsp;Update</a>
                                 </div>
                             </div>
                             </form>

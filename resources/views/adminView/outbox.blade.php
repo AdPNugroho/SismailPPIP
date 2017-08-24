@@ -2,7 +2,6 @@
 @section('css')
 <!-- DataTables -->
 <link href="{{ url('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ url('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -131,8 +130,8 @@ td.noWrapTd{
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnPilihSurat">Pilih Surat</button>
-                                <button type="button" class="btn btn-youtube waves-effect w-md waves-light m-b-5" id="btnResetPilihSurat" style="display:none;">Reset</button>
+                                <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnPilihSurat"><span class="fa fa-chevron-circle-down"></span>&nbsp;&nbsp;Pilih Surat</button>
+                                <button type="button" class="btn btn-youtube waves-effect w-md waves-light m-b-5" id="btnResetPilihSurat" style="display:none;"><span class="fa fa-chevron-circle-left"></span>&nbsp;&nbsp;Reset</button>
                             </div>
                         </div>
                     </form>
@@ -199,7 +198,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmA">Simpan</button>
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnfrmA"><span class="fa fa-save"></span>&nbsp;&nbsp;Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -238,7 +237,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnKepK">Simpan</button>
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnKepK"><span class="fa fa-save"></span>&nbsp;&nbsp;Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -328,7 +327,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnF">Simpan</button>
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnF"><span class="fa fa-save"></span>&nbsp;&nbsp;Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -379,7 +378,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmBA">Simpan</button>
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnfrmBA"><span class="fa fa-save"></span>&nbsp;&nbsp;Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -424,7 +423,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmBB">Simpan</button>
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnfrmBB"><span class="fa fa-save"></span>&nbsp;&nbsp;Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -463,7 +462,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmC">Simpan</button>
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnfrmC"><span class="fa fa-save"></span>&nbsp;&nbsp;Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -508,7 +507,7 @@ td.noWrapTd{
                                 <div class="form-group">
 	                                <label class="col-md-2 control-label"></label>
 	                                <div class="col-md-10">
-                                        <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" id="btnfrmD">Simpan</button>
+                                        <button type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" id="btnfrmD"><span class="fa fa-save"></span>&nbsp;&nbsp;Simpan</button>
 	                                </div>
 	                            </div>
                             </form>
@@ -670,9 +669,6 @@ td.noWrapTd{
 <script src="{{ url('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
 <script src="{{ url('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
-<script src="{{ url('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ url('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
@@ -1052,7 +1048,7 @@ $(document).ready(function(){
                     columnDefs:[
                         { "width": "5%", "targets": 0 },
                         { "width": "15%", "targets": 1 },
-                        { "width": "15%", "targets": 2 },
+                        { "width": "15%", "targets": 2 },   
                         { "width": "5%", "targets": 7},
                         { "width": "5%", "targets": 8},
                         {className:"noWrapTd",targets:[1]},

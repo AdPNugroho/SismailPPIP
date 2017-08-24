@@ -5,12 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Sistem Informasi Pengelolaan Surat Masuk.">
         <meta name="author" content="P2IP System Information">
-
+        <meta name="theme-color" content="#4285f4">
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
         <!-- App title -->
         <title>Sistem Informasi Pengelolaan Surat Masuk - P2IP</title>
-
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -18,9 +17,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
         @yield('css')
-
         <script src="{{ url('assets/js/modernizr.min.js') }}"></script>
-
     </head>
 
 
@@ -34,7 +31,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="{{ url('/') }}" class="logo"><span>SI<span>PAMA</span></span><i class="mdi mdi-layers"></i></a>
+                    <a href="{{ url('/') }}" class="logo"><span>SI<span>PES</span></span><i class="mdi mdi-layers"></i></a>
                 </div>
 
                 <!-- Button mobile view to collapse sidebar menu -->

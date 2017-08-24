@@ -116,7 +116,7 @@ td.noWrapTd{
                             </div>
                             <div class="form-group m-b-0">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <a class="btn btn-info waves-effect waves-light" id="simpan_admin">Register</a>
+                                    <a class="btn btn-primary waves-effect waves-light" id="simpan_admin"><span class="fa fa-save"></span>&nbsp;&nbsp;Register</a>
                                 </div>
                             </div>
                             </form>

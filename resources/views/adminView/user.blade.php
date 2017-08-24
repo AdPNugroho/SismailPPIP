@@ -123,7 +123,7 @@ td.noWrapTd{
                             </div>
                             <div class="form-group m-b-0">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <a class="btn btn-info waves-effect waves-light" id='simpan_user'>Register</a>
+                                    <a class="btn btn-primary waves-effect waves-light" id='simpan_user'><span class="fa fa-save"></span>&nbsp;&nbsp;Register</a>
                                 </div>
                             </div>
                             </form>
@@ -381,14 +381,14 @@ td.noWrapTd{
                 {data: 'last_login'},
                 {data: 'status',render:function(data,type,row){
                     if(data=='2'){
-                        return '<a class="btn-sm btn-primary">Sekretaris</a>';
+                        return '<a class="btn btn-sm btn-primary btn-block">Sekretaris</a>';
                     }else{
-                        return '<a class="btn-sm btn-success">Kasi</a>';
+                        return '<a class="btn btn-sm btn-warning btn-block">Kasi</a>';
                     }
                 }},
                 {data: 'id_pengguna',render:function(data,type,row){
-                    return '<button class="updateUser btn-sm btn-success" data-id='+data+'>Update</button>'+
-                            '<button class="deleteUser btn-sm btn-danger" data-title="Hapus User ?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"  data-id='+data+'>Delete</button>';
+                    return '<button class="updateUser btn btn-sm btn-success" data-id='+data+'>Update</button>'+
+                            '<button class="deleteUser btn btn-sm btn-danger" data-title="Hapus User ?" data-btn-ok-label="Ya" data-btn-cancel-label="Tidak" data-toggle="confirmation" data-placement="left"  data-id='+data+'>Delete</button>';
                 }}
             ],
             columnDefs:[
