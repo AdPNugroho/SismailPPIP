@@ -90,8 +90,8 @@ $(document).ready(function() {
     
 {!! Form::open(array('url'=>'auth/login','class'=>'login-form','name'=>'login-form','id'=>'formLogin')) !!}    
     <div class="header">
-        <h1><center>SIPES</center></h1>
-        <span><h3>Sistem Informasi Pengelolaan Surat.<br>&nbsp;</h3></span>
+        <h1><center>SIPAMA</center></h1>
+        <span><h3>Sistem Informasi Pengelolaan Surat Masuk.<br>&nbsp;</h3></span>
     </div>
     <div class="content">
 	    <input name="username" type="text" class="input username" placeholder="Username"  required/>

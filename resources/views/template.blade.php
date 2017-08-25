@@ -31,7 +31,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="{{ url('/') }}" class="logo"><span>SI<span>PES</span></span><i class="mdi mdi-layers"></i></a>
+                    <a href="{{ url('/') }}" class="logo"><span>SI<span>PAMA</span></span><i class="mdi mdi-layers"></i></a>
                 </div>
 
                 <!-- Button mobile view to collapse sidebar menu -->

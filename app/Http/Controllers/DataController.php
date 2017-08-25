@@ -3383,10 +3383,16 @@ class DataController extends Controller
                         $sekre = ($data[$z]['arsip']==1 ? 'x' : '');
                         $disposisi_lainnya = ($data[$z]['disposisi_lainnya']!==null ? $data[$z]['disposisi_lainnya'] : '' );
                         $catatan = $data[$z]['catatan'];
+                        $sifat = $data[$z]['sifat_lainnya'];
                         $sheet->row($no,array(
-                            $id_surat,Carbon::parse($tanggal_terima)->formatLocalized('%d %B %Y'),
-                            Carbon::parse($tanggal_surat)->formatLocalized('%d %B %Y'),$nomor_surat,$asal_surat,$perihal,$petunjuk,
-                            $bd401,$bd402,$bd403,$bd404,$bd701,$bd702,$sekre,$disposisi_lainnya,$catatan
+                            $id_surat,
+                            Carbon::parse($tanggal_terima)->formatLocalized('%d %B %Y'),
+                            Carbon::parse($tanggal_surat)->formatLocalized('%d %B %Y'),
+                            $nomor_surat,
+                            $asal_surat,
+                            $perihal,
+                            $petunjuk,
+                            $bd401,$bd402,$bd403,$bd404,$bd701,$bd702,$sekre,$disposisi_lainnya,$catatan,$sifat
                         ));
                     }
                     $sheet->prependRow(1,array(
